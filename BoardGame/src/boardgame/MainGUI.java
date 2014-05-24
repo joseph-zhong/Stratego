@@ -15,7 +15,10 @@ package boardgame;
  *
  **/
 
-public class MainGUI 
+public class MainGUI
 {
-
+    public MainGUI()
+    {
+        
+    }
 }
