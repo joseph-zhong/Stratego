@@ -16,11 +16,9 @@ abstract class Piece
     private int distanceCapable;
     private Image face;
     private Cell location;
-    private Board board;
 
-    public Piece(Board b, int p, char a, int d, Image f)
+    public Piece(int p, char a, int d, Image f)
     {
-        board = b;
         power = p;  
         ability = a;
         distanceCapable = d;
@@ -70,7 +68,4 @@ abstract class Piece
 
     public Image getFace()
     { return face; }
-    
-    public Board getBoard()
-    { return board; }
 }
