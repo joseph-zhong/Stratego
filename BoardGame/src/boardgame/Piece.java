@@ -24,8 +24,10 @@ abstract class Piece
         distanceCapable = d;
         face = f;
     }
-
-
+    
+    public void setCell(Cell cell)
+    { location = cell; }
+    
     public int getPower()
     { return power; }
 

@@ -10,7 +10,18 @@ package boardgame;
  */
 public class Board {
     
-    private Cell[][] cells = new Cell[10][10];
+    private Piece[][] grid = new Piece[10][10];
+    
+    public Board()
+    {
+        for(int i = 0; i < grid.length; i++)
+        {
+            for(int j = 0; j < grid[i].length; i++)
+            {
+                grid[i][j] = new Cell(i,j);
+            }
+        }   
+    }
     
     public boolean canMove(Piece p, Cell target)
     {
@@ -20,17 +31,16 @@ public class Board {
         }
         return false;
     }
-    
-    
-    public Board()
+    public void move(Piece p, Cell target)
     {
-        for(int i = 0; i < cells.length; i++)
+        Piece pieceInTargetCell = grid[p.getCell().getX()][p.getCell().getY()];
+        if( pieceInTargetCell == null)
         {
-            for(int j = 0; j < cells[i].length; i++)
-            {
-                cells[i][j] = new Cell(i,j);
-            }
-        }   
-    }
-    
+            p.setCell(target);
+        }
+        else
+        {
+            p.attack(pieceInTargetCell);
+        }
+    }    
 }
