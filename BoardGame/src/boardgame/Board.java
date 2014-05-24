@@ -15,8 +15,14 @@ public class Board
 
     public boolean canMove(Piece p, Cell target)
     {
-        return true; // place holder
+        if((p.getCell().getX() == target.getX() || p.getCell().getY() == target.getY() ) && (Math.abs(p.getCell().getX() - target.getX()) <= p.getDistanceCapable()) || (Math.abs(p.getCell().getY() - target.getY()) <= p.getDistanceCapable()))
+        {
+            return true;
+        }
+        return false;
     }
+
+
 
     public Board()
     {
