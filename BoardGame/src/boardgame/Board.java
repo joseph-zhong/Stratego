@@ -24,6 +24,13 @@ public class Board
         }   
     }
     
+    public Piece put(Piece p, Cell target)
+    {
+        Piece temp = grid[target.getX()][target.getY()];
+        grid[target.getX()][target.getY()] = p;
+        return temp;
+    }
+    
     public boolean canMove(Piece p, Cell target)
     {
         if((p.getCell().getX() == target.getX() || p.getCell().getY() == target.getY() ) && (Math.abs(p.getCell().getX() - target.getX()) <= p.getDistanceCapable()) || (Math.abs(p.getCell().getY() - target.getY()) <= p.getDistanceCapable()))
