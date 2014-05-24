@@ -109,7 +109,7 @@ public final class DrawingPanel extends FileFilter
     public static final String MULTIPLE_PROPERTY   = "drawingpanel.multiple";
     public static final String SAVE_PROPERTY       = "drawingpanel.save";
     public static final String ANIMATION_FILE_NAME = "_drawingpanel_animation_save.txt";
-    private static final String TITLE              = "Drawing Panel";
+    private static final String TITLE              = "Board Game Arcade";
     private static final String COURSE_WEB_SITE = "http://www.cs.washington.edu/education/courses/cse143/CurrentQtr/drawingpanel.txt";
     private static final int DELAY                 = 100;     // delay between repaints in millis
     private static final int MAX_FRAMES            = 100;     // max animation frames
