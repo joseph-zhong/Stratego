@@ -11,8 +11,8 @@ package boardgame;
 import java.awt.*;
 public class Bomb extends Piece
 {
-    public Bomb()
+    public Bomb(Board b)
     {
-        super(11, 'n', 0, null);
+        super(b, 11, 'n', 0, null);
     }
 }

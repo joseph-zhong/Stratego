@@ -10,8 +10,8 @@ package boardgame;
  */
 public class Miner extends Piece
 {
-    public Miner()
+    public Miner(Board b)
     {
-        super(3, 'm', 1, null);
+        super(b, 3, 'm', 1, null);
     }
 }

@@ -10,8 +10,8 @@ package boardgame;
  */
 public class Major extends Piece
 {
-    public Major()
+    public Major(Board b)
     {
-        super(7, 'n', 1, null);
+        super(b, 7, 'n', 1, null);
     }
 }
