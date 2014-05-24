@@ -12,12 +12,12 @@ import java.awt.*;
 abstract class Piece
 {
     private int power;
-    private int ability;
+    private char ability;
     private int distanceCapable;
     private Image face;
     private Cell location;
 
-    public Piece(int p, int a, int d, Image f)
+    public Piece(int p, char a, int d, Image f)
     {
         power = p;
         ability = a;
@@ -29,7 +29,7 @@ abstract class Piece
     public int getPower()
     { return power; }
 
-    public int getAbility()
+    public char getAbility()
     { return ability; }
 
     public Cell getCell()
