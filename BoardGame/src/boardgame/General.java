@@ -12,6 +12,6 @@ public class General extends Piece
 {
     public General()
     {
-        super(9, 'n', 1, );
+        super(9, 'n', 1, null);
     }
 }

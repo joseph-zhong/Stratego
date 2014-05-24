@@ -12,6 +12,6 @@ public class Captain extends Piece
 {
     public Captain()
     {
-        super(6, 'n', 1, );
+        super(6, 'n', 1, null);
     }
 }

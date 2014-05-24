@@ -12,6 +12,6 @@ public class Marshal extends Piece
 {
     public Marshal()
     {
-        super(10, 'n', 1, );
+        super(10, 'n', 1, null);
     }
 }

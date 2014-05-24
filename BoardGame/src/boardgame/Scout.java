@@ -12,6 +12,6 @@ public class Scout extends Piece
 {
     public Scout()
     {
-        super(2, 'x', 10, );
+        super(2, 'x', 10, null);
     }
 }

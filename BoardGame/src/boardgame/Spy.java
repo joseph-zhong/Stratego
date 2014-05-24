@@ -12,6 +12,6 @@ public class Spy extends Piece
 {
     public Spy()
     {
-        super(0, 's', 1, );
+        super(0, 's', 1, null);
     }
 }

@@ -12,6 +12,6 @@ public class Miner extends Piece
 {
     public Miner()
     {
-        super(3, 'm', 1, );
+        super(3, 'm', 1, null);
     }
 }
