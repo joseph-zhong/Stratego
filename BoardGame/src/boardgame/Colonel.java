@@ -10,8 +10,8 @@ package boardgame;
  */
 public class Colonel extends Piece
 {
-    public Colonel(Board b)
+    public Colonel()
     {
-        super(b, 8, 'n', 1, null);
+        super(8, 'n', 1, null);
     }
 }

@@ -10,8 +10,8 @@ package boardgame;
  */
 public class Sergeant extends Piece
 {
-    public Sergeant(Board b)
+    public Sergeant()
     {
-        super(b, 4, 'n', 1, null);
+        super(4, 'n', 1, null);
     }
 }

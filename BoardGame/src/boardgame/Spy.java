@@ -10,8 +10,8 @@ package boardgame;
  */
 public class Spy extends Piece
 {
-    public Spy(Board b)
+    public Spy()
     {
-        super(b, 0, 's', 1, null);
+        super(0, 's', 1, null);
     }
 }
