@@ -19,7 +19,7 @@ public class Board
         {
             for(int j = 0; j < grid[i].length; i++)
             {
-                grid[i][j] = new Cell(i,j);
+                grid[i][j] = null;
             }
         }   
     }
@@ -35,13 +35,25 @@ public class Board
     
     public void move(Piece p, Cell target)
     {
-        if(grid[target.getX()][target.getY()] == null)
+        Piece pieceInTargetCell = grid[target.getX()][target.getY()];
+        //if target is empty, move to target location
+        if( pieceInTargetCell == null)
         {
             p.setCell(target);
         }
+        //otherwise attack piece
         else
         {
-            p.attack();
+            //if attack is victorious, replace cell with piece
+            if(p.attack(pieceInTargetCell))
+            {
+                p.setCell(target);
+            }
+            //else, remove piece from grid
+            else
+            {
+                grid[p.getCell().getX()][p.getCell().getY()] = null;
+            }
         }
     }
 
