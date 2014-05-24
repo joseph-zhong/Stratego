@@ -6,6 +6,8 @@
 package boardgame;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.ArrayList;
 
 /**
  *
@@ -28,11 +30,12 @@ public class MainGUI
     // main Panel for overall display
     private static DrawingPanel mainPanel;
 
-
+    // contents for MainPanel
+    // private static ArrayList<Rectangle> Buttons;
+    private static MainMenuGUI primaryMenu;
 
     public static void main(String[] arg)
     {
-
         DrawingPanel panel = new DrawingPanel(WIDTH, HEIGHT);
         Graphics g = panel.getGraphics();
 
