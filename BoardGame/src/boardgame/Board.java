@@ -8,15 +8,16 @@ package boardgame;
  *
  * @author admin
  */
-public class Board {
-    
+public class Board
+{
+
     private Cell[][] cells = new Cell[10][10];
-    
+
     public boolean canMove(Piece p, Cell target)
     {
-        
+        return true; // place holder
     }
-    
+
     public Board()
     {
         for(int i = 0; i < cells.length; i++)
@@ -25,7 +26,7 @@ public class Board {
             {
                 cells[i][j] = new Cell(i,j);
             }
-        }   
+        }
     }
-    
+
 }
