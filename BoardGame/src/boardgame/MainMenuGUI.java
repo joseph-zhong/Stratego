@@ -5,6 +5,9 @@
 
 package boardgame;
 
+import java.awt.Button;
+import java.util.ArrayList;
+
 /**
  *
  *  Joseph Zhong
@@ -15,7 +18,7 @@ package boardgame;
  *
  **/
 
-public class MainMenuGUI 
+public class MainMenuGUI
 {
-
+    private static ArrayList<Button> menuContents;
 }
