@@ -20,8 +20,8 @@ import java.awt.Graphics;
 public class MainGUI
 {
     // constants for the drawing panel size, tile sizes, and # of tiles
-    public static final int WIDTH = 1000;
-    public static final int HEIGHT = 800;
+    public static final int HEIGHT = 600;
+    public static final int WIDTH = 800;
     public static final int MIN_SIZE = 100;
     public static final int MAX_SIZE = 200;
 
@@ -33,7 +33,7 @@ public class MainGUI
     public static void main(String[] arg)
     {
 
-        DrawingPanel panel = new DrawingPanel(HEIGHT, WIDTH);
+        DrawingPanel panel = new DrawingPanel(WIDTH, HEIGHT);
         Graphics g = panel.getGraphics();
 
         /*
