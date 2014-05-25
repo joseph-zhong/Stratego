@@ -10,7 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import javax.swing.event.MouseInputAdapter;
 
 /**
  *
@@ -24,7 +26,7 @@ import java.awt.image.BufferedImage;
 
 public class CellGUI extends ButtonGUI
 {
-    private BufferedImage PieceImage;
+    private PieceObject PieceObject;
 
     private boolean isPossibleMove;
     private boolean isWater;
@@ -34,6 +36,7 @@ public class CellGUI extends ButtonGUI
         super(_x, _y, _width, _height, _c, _name);
         isPossibleMove = true;
         isWater = _isWater;
+        
     }
 
     /** Draws this button using the given graphics pen. */
@@ -50,30 +53,52 @@ public class CellGUI extends ButtonGUI
 
     }
 
-    public void setPiece(BufferedImage _PieceImage)
+    public void setPiece(PieceObject _PieceObject)
     {
         if(isPossibleMove)
         {
-            PieceImage = (BufferedImage) _PieceImage.getScaledInstance(getX(), getY(), Image.SCALE_DEFAULT);
+            PieceObject = _PieceObject;
         }
         isPossibleMove = false;
     }
 
     public void removePiece()
     {
-        if(PieceImage != null)
+        if(PieceObject != null)
         {
-            PieceImage = null;
+            PieceObject = null;
         }
     }
 
-    public BufferedImage getPiece()
+    public PieceObject getPiece()
     {
-        return PieceImage;
+        return PieceObject;
     }
 
     public boolean getIsWater()
     {
         return isWater;
+    }
+
+    // A class for responding to mouse clicks on the drawing panel.
+    public static class RectangleMouseListener extends MouseInputAdapter
+    {
+        private DrawingPanel panel;
+
+
+        public RectangleMouseListener(DrawingPanel _panel)
+        {
+            panel = _panel;
+        }
+
+        @Override
+        public void mousePressed(MouseEvent evt)
+        {
+            int x = evt.getX() / panel.getZoom();
+            int y = evt.getY() / panel.getZoom();
+
+            System.out.println(x + " " + y);
+
+        }
     }
 }
