@@ -29,35 +29,36 @@ public class MainGUI extends JFrame
 {
     // constants for the drawing panel size, tile sizes, and # of tiles
     public static final int PANEL_HEIGHT = 600;
-    public static final int PANEL_WIDTH = 800;
+    public static final int PANEL_WIDTH = 1000;
+    public static final int GAME_WIDTH = 600;
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 100;
+
+    private static boolean menuStage;
+
+    // main Graphics
+    private static Graphics mainGraphics;
 
     // main Panel for overall display
     private static DrawingPanel mainPanel;
 
-    private static enum BUTTON
-    {
-        StartButton("Start Game", 1), InstructionsButton("Instructions", 2);
-
-        private String name;
-        private int index;
-
-        private BUTTON(String _name, int _index)
-        {
-            name = _name;
-            index = _index;
-        }
-    }
+    private static GameBoardGUI mainBoard;
 
     // contents for MainPanel
     // private static ArrayList<Rectangle> Buttons;
     private static MainMenuGUI primaryMenu;
 
+    private static void initComponents()
+    {
+        mainPanel = new DrawingPanel(PANEL_WIDTH, PANEL_HEIGHT);
+        mainGraphics = mainPanel.getGraphics();
+        mainBoard = new GameBoardGUI();
+        menuStage = true;
+    }
+
     public static void main(String[] arg)
     {
-        DrawingPanel panel = new DrawingPanel(PANEL_WIDTH, PANEL_HEIGHT);
-        Graphics g = panel.getGraphics();
+        initComponents();
 
         primaryMenu = new MainMenuGUI();
 
@@ -85,16 +86,17 @@ public class MainGUI extends JFrame
             primaryMenu.addButton(new Button(PANEL_WIDTH / ));
         }
 */
-        primaryMenu.displayAll(g);
+        primaryMenu.displayAll(mainGraphics);
 
         /*
         // listen for key presses
         RectangleKeyListener listener = new RectangleKeyListener(panel, list);
         panel.addKeyListener(listener);
         * */
+
         // listen for mouse clicks
-        RectangleMouseListener listener2 = new RectangleMouseListener(panel);
-        panel.addMouseListener(listener2);
+        RectangleMouseListener listener2 = new RectangleMouseListener(mainPanel);
+        mainPanel.addMouseListener(listener2);
 
     }
 
@@ -104,16 +106,16 @@ public class MainGUI extends JFrame
         private DrawingPanel panel;
 
 
-        public RectangleMouseListener(DrawingPanel panel)
+        public RectangleMouseListener(DrawingPanel _panel)
         {
-            this.panel = panel;
+            panel = _panel;
         }
 
         @Override
-        public void mousePressed(MouseEvent event)
+        public void mousePressed(MouseEvent evt)
         {
-            int x = event.getX() / panel.getZoom();
-            int y = event.getY() / panel.getZoom();
+            int x = evt.getX() / panel.getZoom();
+            int y = evt.getY() / panel.getZoom();
 
             System.out.println(x + " " + y);
 
@@ -122,38 +124,46 @@ public class MainGUI extends JFrame
 
         private void checkClick(int x, int y)
         {
-            if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
-                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
-                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75)
-                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75) + BUTTON_HEIGHT)
+            if(menuStage)
             {
-                System.out.println("Start Game Instigated");
-                panel.clear();
-
+                if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                    && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                    && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75)
+                    && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75) + BUTTON_HEIGHT)
+                {
+                    System.out.println("Start Game Instigated");
+                    panel.clear();
+                    mainBoard.buildGameBoard(GAME_WIDTH / 10);
+                    for(int i = 0; i < mainBoard.getCells(); i++)
+                    {
+                        mainBoard.getCell(i).draw(mainGraphics);
+                    }
+                }
+                else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                    && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                    && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25)
+                    && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25) + BUTTON_HEIGHT)
+                {
+                    System.out.println("Instructions Instigated");
+                    panel.clear();
+                }
+                else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                    && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                    && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75)
+                    && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75) + BUTTON_HEIGHT)
+                {
+                    System.out.println("Hall Of Fame Instigated");
+                }
+                else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                    && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                    && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25)
+                    && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25) + BUTTON_HEIGHT)
+                {
+                    System.out.println("Quit Instigated");
+                    System.exit(0);
+                }
             }
-            else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
-                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
-                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25)
-                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25) + BUTTON_HEIGHT)
-            {
-                System.out.println("Instructions Instigated");
-                panel.clear();
-            }
-            else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
-                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
-                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75)
-                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75) + BUTTON_HEIGHT)
-            {
-                System.out.println("Hall Of Fame Instigated");
-            }
-            else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
-                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
-                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25)
-                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25) + BUTTON_HEIGHT)
-            {
-                System.out.println("Quit Instigated");
-                System.exit(0);
-            }
+            menuStage = false;
         }
     }
 }
