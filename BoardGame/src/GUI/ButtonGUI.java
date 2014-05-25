@@ -21,7 +21,7 @@ import java.awt.Rectangle;
  *
  **/
 
-public class ButtonGUI extends Button
+public class ButtonGUI
 {
     // graphics rectangle stuff
     private int x;          // top-left x/y
