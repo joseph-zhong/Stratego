@@ -29,7 +29,7 @@ public class Board
         b.getCell(3, 4).put(new Major());
         System.out.println(b.toString());
 
-        b.getCell(3, 5).put(new Major());
+        b.getCell(3, 5).put(new Colonel());
         System.out.println(b.toString());
         
         if(b.canMove(3,4,3,5))
