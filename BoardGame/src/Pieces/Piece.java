@@ -9,14 +9,16 @@ package Pieces;
  * @author Adarsh
  */
 import java.awt.*;
-abstract class Piece
+import java.awt.image.BufferedImage;
+
+public abstract class Piece
 {
     private int power;
     private char ability;
     private int distanceCapable;
-    private Image face;
+    private BufferedImage face;
 
-    public Piece(int p, char a, int d, Image f)
+    public Piece(int p, char a, int d, BufferedImage f)
     {
         power = p;
         ability = a;
