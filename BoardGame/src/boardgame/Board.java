@@ -17,13 +17,16 @@ public class Board
     {
         for(int i = 0; i < grid.length; i++)
         {
-            for(int j = 0; j < grid[i].length; i++)
+            for(int j = 0; j < grid[i].length; j++)
             {
                 grid[i][j] = null;
             }
         }   
     }
-    
+    public static void main(String [] args){
+        Board b = new Board();
+        b.put(new Bomb(), new Cell(3,4));
+    }
     public Piece put(Piece p, Cell target)
     {
         Piece temp = grid[target.getX()][target.getY()];
@@ -46,7 +49,7 @@ public class Board
         //if target is empty, move to target location
         if( pieceInTargetCell == null)
         {
-            p.setCell(target);
+            put(p, target);
         }
         //otherwise attack piece
         else
@@ -54,7 +57,7 @@ public class Board
             //if attack is victorious, replace cell with piece
             if(p.attack(pieceInTargetCell))
             {
-                p.setCell(target);
+                put(p, target);
             }
             //else, remove piece from grid
             else
