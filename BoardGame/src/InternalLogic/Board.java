@@ -52,7 +52,7 @@ public class Board {
                     for(int i = currentCol + 1; i < targetCol; i++)
                     {
                         if(getCell(targetRow, i).get() != null
-                                || getCell(targetRow, i).hasWater())
+                                || getCell(targetRow, i).isWater())
                         {
                             return false;
                         }
@@ -66,7 +66,7 @@ public class Board {
                     for(int i = targetCol - 1; i > currentCol; i--)
                     {
                         if(getCell(targetRow, i).get() != null
-                                || getCell(targetRow, i).hasWater())
+                                || getCell(targetRow, i).isWater())
                         {
                             return false;
                         }
@@ -87,7 +87,7 @@ public class Board {
                     for(int i = currentRow + 1; i < targetRow; i++)
                     {
                         if(getCell(i, targetCol).get() != null
-                                || getCell(i, targetRow).hasWater())
+                                || getCell(i, targetRow).isWater())
                         {
                             return false;
                         }
@@ -101,7 +101,7 @@ public class Board {
                     for(int i = targetRow; i > currentRow; i--)
                     {
                         if(getCell(i, targetCol).get() != null
-                                || getCell(i, targetRow).hasWater())
+                                || getCell(i, targetRow).isWater())
                         {
                             return false;
                         }

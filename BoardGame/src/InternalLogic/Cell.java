@@ -14,7 +14,7 @@ public class Cell {
         piece = null;
         hasWater = false;
     }
-    public boolean hasWater()
+    public boolean isWater()
     {
         return hasWater;
     }
