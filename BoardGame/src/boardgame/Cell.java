@@ -9,19 +9,23 @@ package boardgame;
  * @author admin
  */
 public class Cell {
-    private int x;
-    private int y;
+    private int row;
+    private int col;
     public Cell(int x, int y)
     {
-        this.x = x;
-        this.y = y;
+        this.row = x;
+        this.col = y;
     }
-    public int getX()
+    public int getRow()
     {
-        return x;
+        return row;
     }
-    public int getY()
+    public int getCol()
     {
-        return y;
+        return col;
+    }
+    public boolean equals(Cell c)
+    {
+        return row == c.getRow() && col == c.getRow();
     }
 }

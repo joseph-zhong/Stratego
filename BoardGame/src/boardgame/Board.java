@@ -29,23 +29,94 @@ public class Board
     }
     public Piece put(Piece p, Cell target)
     {
-        Piece temp = grid[target.getX()][target.getY()];
-        grid[target.getX()][target.getY()] = p;
+        Piece temp = grid[target.getRow()][target.getCol()];
+        grid[target.getRow()][target.getCol()] = p;
         return temp;
     }
     
     public boolean canMove(Piece p, Cell target)
     {
-        if((p.getCell().getX() == target.getX() || p.getCell().getY() == target.getY() ) && (Math.abs(p.getCell().getX() - target.getX()) <= p.getDistanceCapable()) || (Math.abs(p.getCell().getY() - target.getY()) <= p.getDistanceCapable()))
+        //if target cell is current location, false
+        if(p.getCell().equals(target))
         {
-            return true;
+            return false;
+        }
+        //if the two points are in same row
+        if(p.getCell().getRow() == target.getRow())
+        {
+            //if points are within range
+            if(Math.abs(p.getCell().getCol() - target.getCol()) <= p.getDistanceCapable())
+            {
+                //if current cell is left of target
+                if(p.getCell().getCol() < target.getCol())
+                {
+                    for(int i = p.getCell().getCol(); i < target.getCol(); i++)
+                    {
+                        if(grid[target.getRow()][i] != null 
+                                && grid[target.getRow()][i] != p)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                //if current cell is right of target
+                else
+                {
+                    //check if there are any pieces in between piece and target
+                    for(int i = target.getCol(); i > p.getCell().getCol(); i--)
+                    {
+                        if(grid[target.getRow()][i] != null 
+                                && grid[target.getRow()][i] != p)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+        //if in same column
+        else if(p.getCell().getCol() == target.getCol())
+        {
+            //if points are within range
+            if(Math.abs(p.getCell().getRow() - target.getRow()) <= p.getDistanceCapable())
+            {
+                //if current cell is above of target
+                if(p.getCell().getRow() < target.getRow())
+                {
+                    for(int i = p.getCell().getRow(); i < target.getRow(); i++)
+                    {
+                        if(grid[target.getCol()][i] != null 
+                                && grid[target.getCol()][i] != p)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                //if current cell is right of target
+                else
+                {
+                    //check if there are any pieces in between piece and target
+                    for(int i = target.getRow(); i > p.getCell().getRow(); i--)
+                    {
+                        if(grid[target.getCol()][i] != null 
+                                && grid[target.getCol()][i] != p)
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
         }
         return false;
     }
     
     public void move(Piece p, Cell target)
     {
-        Piece pieceInTargetCell = grid[target.getX()][target.getY()];
+        Piece pieceInTargetCell = grid[target.getRow()][target.getCol()];
         //if target is empty, move to target location
         if( pieceInTargetCell == null)
         {
@@ -62,7 +133,7 @@ public class Board
             //else, remove piece from grid
             else
             {
-                grid[p.getCell().getX()][p.getCell().getY()] = null;
+                grid[p.getCell().getRow()][p.getCell().getCol()] = null;
             }
         }
     }
