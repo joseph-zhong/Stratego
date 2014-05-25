@@ -71,4 +71,9 @@ abstract class Piece
 
     public Image getFace()
     { return face; }
+    
+    public String toString()
+    {
+        return Integer.toString(power);
+    }
 }

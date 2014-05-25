@@ -25,7 +25,14 @@ public class Board
     }
     public static void main(String [] args){
         Board b = new Board();
-        b.put(new Bomb(), new Cell(3,4));
+        Piece p = new Scout();
+        b.put(new Sergeant(), new Cell(3,4));
+        b.put(p, new Cell(7,4));
+        if(b.canMove(p, new Cell(3,4)))
+        {
+            b.move(p, new Cell(3,4));
+        }
+        System.out.println(b.toString());
     }
     public Piece put(Piece p, Cell target)
     {
@@ -36,21 +43,26 @@ public class Board
     
     public boolean canMove(Piece p, Cell target)
     {
+        Cell currentCell = findPieceInGrid(p);
+        if(currentCell == null)
+        {
+            return false;
+        }
         //if target cell is current location, false
-        if(p.getCell().equals(target))
+        if(currentCell.equals(target))
         {
             return false;
         }
         //if the two points are in same row
-        if(p.getCell().getRow() == target.getRow())
+        if(currentCell.getRow() == target.getRow())
         {
             //if points are within range
-            if(Math.abs(p.getCell().getCol() - target.getCol()) <= p.getDistanceCapable())
+            if(Math.abs(currentCell.getCol() - target.getCol()) <= p.getDistanceCapable())
             {
                 //if current cell is left of target
-                if(p.getCell().getCol() < target.getCol())
+                if(currentCell.getCol() < target.getCol())
                 {
-                    for(int i = p.getCell().getCol(); i < target.getCol(); i++)
+                    for(int i = currentCell.getCol(); i < target.getCol(); i++)
                     {
                         if(grid[target.getRow()][i] != null 
                                 && grid[target.getRow()][i] != p)
@@ -64,7 +76,7 @@ public class Board
                 else
                 {
                     //check if there are any pieces in between piece and target
-                    for(int i = target.getCol(); i > p.getCell().getCol(); i--)
+                    for(int i = target.getCol(); i > currentCell.getCol(); i--)
                     {
                         if(grid[target.getRow()][i] != null 
                                 && grid[target.getRow()][i] != p)
@@ -77,15 +89,15 @@ public class Board
             }
         }
         //if in same column
-        else if(p.getCell().getCol() == target.getCol())
+        else if(currentCell.getCol() == target.getCol())
         {
             //if points are within range
-            if(Math.abs(p.getCell().getRow() - target.getRow()) <= p.getDistanceCapable())
+            if(Math.abs(currentCell.getRow() - target.getRow()) <= p.getDistanceCapable())
             {
                 //if current cell is above of target
-                if(p.getCell().getRow() < target.getRow())
+                if(currentCell.getRow() < target.getRow())
                 {
-                    for(int i = p.getCell().getRow(); i < target.getRow(); i++)
+                    for(int i = currentCell.getRow(); i < target.getRow(); i++)
                     {
                         if(grid[target.getCol()][i] != null 
                                 && grid[target.getCol()][i] != p)
@@ -99,7 +111,7 @@ public class Board
                 else
                 {
                     //check if there are any pieces in between piece and target
-                    for(int i = target.getRow(); i > p.getCell().getRow(); i--)
+                    for(int i = target.getRow(); i > currentCell.getRow(); i--)
                     {
                         if(grid[target.getCol()][i] != null 
                                 && grid[target.getCol()][i] != p)
@@ -117,6 +129,7 @@ public class Board
     public void move(Piece p, Cell target)
     {
         Piece pieceInTargetCell = grid[target.getRow()][target.getCol()];
+        Cell currentCell =  findPieceInGrid(p);
         //if target is empty, move to target location
         if( pieceInTargetCell == null)
         {
@@ -133,9 +146,44 @@ public class Board
             //else, remove piece from grid
             else
             {
-                grid[p.getCell().getRow()][p.getCell().getCol()] = null;
+                grid[currentCell.getRow()][currentCell.getCol()] = null;
             }
         }
     }
 
+    public String toString()
+    {
+        String str = "";
+        for(Piece[] p: grid)
+        {
+            for(Piece q: p)
+            {
+                if(q == null)
+                {
+                    str += "X ";
+                }
+                else
+                {
+                    str += (q.toString() + " ");
+                }
+            }
+            str += "\n";
+        }
+        return str;
+    }
+    
+    private Cell findPieceInGrid(Piece p)
+    {
+        for(int row = 0; row < grid.length; row++)
+        {
+            for(int col = 0; col < grid[row].length; col++)
+            {
+                if(grid[row][col] == p)
+                {
+                    return new Cell(row,col);
+                }
+            }
+        }
+        return null;
+    }
 }
