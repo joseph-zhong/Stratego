@@ -8,6 +8,7 @@ package boardgame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JFrame;
@@ -27,7 +28,7 @@ import javax.swing.event.MouseInputAdapter;
 public class MainGUI extends JFrame
 {
     // constants for the drawing panel size, tile sizes, and # of tiles
-    public static final int PANEL_HEIGHT = 600;
+    public static final int PANEL_HEIGHT = 800;
     public static final int PANEL_WIDTH = 800;
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 100;
@@ -127,6 +128,8 @@ public class MainGUI extends JFrame
                 && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75) + BUTTON_HEIGHT)
             {
                 System.out.println("Start Game Instigated");
+                panel.clear();
+
             }
             else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
                 && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
