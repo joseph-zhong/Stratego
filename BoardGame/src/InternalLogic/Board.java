@@ -24,4 +24,92 @@ public class Board {
     {
         return grid[row][col];
     }
+    public boolean canMove(int currentRow, int currentCol, int targetRow, int targetCol)
+    {
+        if( getCell(currentRow, currentCol).get() == null)
+        {
+            return false;
+        }
+        //if target cell is current location, false
+        if(currentRow == targetRow && currentCol == targetCol)
+        {
+            return false;
+        }
+        //if the two points are in same row
+        if(currentRow == targetRow)
+        {
+            //if points are within range
+            if(Math.abs(currentCol - targetCol) <= getCell(currentRow, currentCol).get().getDistanceCapable())
+            {
+                //if current cell is left of target
+                if(currentCol < targetCol)
+                {
+                    //if cells are adjacemt
+                    if(Math.abs(currentCol - targetCol) == 1)
+                    {
+                        return true;
+                    }
+                    for(int i = currentCol + 1; i < targetCol; i++)
+                    {
+                        if(getCell(targetRow, i).get() != null
+                                || getCell(targetRow, i).hasWater())
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                //if current cell is right of target
+                else
+                {
+                    //check if there are any pieces in between piece and target
+                    for(int i = targetCol - 1; i > currentCol; i--)
+                    {
+                        if(getCell(targetRow, i).get() != null
+                                || getCell(targetRow, i).hasWater())
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+        //if in same column
+        else if(currentCol== targetCol)
+        {
+            //if points are within range
+            if(Math.abs(currentRow - targetRow) <= getCell(currentRow, currentCol).get().getDistanceCapable())
+            {
+                //if current cell is above of target
+                if(currentRow < targetRow)
+                {
+                    for(int i = currentRow + 1; i < targetRow; i++)
+                    {
+                        if(getCell(i, targetCol).get() != null
+                                || getCell(i, targetRow).hasWater())
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+                //if current cell is right of target
+                else
+                {
+                    //check if there are any pieces in between piece and target
+                    for(int i = targetRow; i > currentRow; i--)
+                    {
+                        if(getCell(i, targetCol).get() != null
+                                || getCell(i, targetRow).hasWater())
+                        {
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

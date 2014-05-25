@@ -14,7 +14,11 @@ public class Cell {
         piece = null;
         hasWater = false;
     }
-    public void hasWater(boolean b)
+    public boolean hasWater()
+    {
+        return hasWater;
+    }
+    public void setHasWater(boolean b)
     {
         hasWater = b;
     }
