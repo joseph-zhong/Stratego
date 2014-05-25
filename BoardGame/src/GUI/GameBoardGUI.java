@@ -22,12 +22,13 @@ public class GameBoardGUI
 {
     private static final int LENGTH = 10;
 
-    private ArrayList<CellGUI> Cells;
+    //private ArrayList<CellGUI> Cells;
+    private CellGUI Cells[][];
 
     public GameBoardGUI()
     {
-        Cells = new ArrayList<>();
-
+        //Cells = new ArrayList<>();
+        Cells = new CellGUI[LENGTH][LENGTH];
 
         /*
         CellGUI c1 = new CellGUI(20, 20, 10, 10, Color.BLACK, "Test");
@@ -64,11 +65,12 @@ public class GameBoardGUI
                         CellLength, CellLength, Color.ORANGE, ".", _isWater);
                 }
 
-                Cells.add(tempCell);
+                //Cells.add(tempCell);
+                Cells[r][c] = tempCell;
             }
         }
     }
-
+/*
     public int getCells()
     {
         return LENGTH * LENGTH;
@@ -79,4 +81,9 @@ public class GameBoardGUI
         return Cells.get(i);
     }
 
+* */
+    public CellGUI[][] getCells()
+    {
+        return Cells;
+    }
 }
