@@ -15,7 +15,6 @@ abstract class Piece
     private char ability;
     private int distanceCapable;
     private Image face;
-    private Cell location;
 
     public Piece(int p, char a, int d, Image f)
     {
@@ -51,20 +50,13 @@ abstract class Piece
         return power >= p.getPower();
     }
     
-    public void setCell(Cell cell)
-    { location = cell; }
-    
-    public void setCell(int row, int col)
-    { location = new Cell(row, col); }
-    
     public int getPower()
     { return power; }
 
     public char getAbility()
     { return ability; }
 
-    public Cell getCell()
-    { return location; }
+
 
     public int getDistanceCapable()
     { return distanceCapable; }
