@@ -221,7 +221,7 @@ public class MainGUI extends JFrame
     private static void showCellHUD(Graphics g)
     {
         System.out.println("Enter number respresenting piece");
-        g.drawString("Enter number respresenting piece", GAME_WIDTH, PANEL_HEIGHT - GAME_CELL);
+        g.drawString("Enter number respresenting piece: ", GAME_WIDTH, PANEL_HEIGHT - GAME_CELL);
     }
 
     public static class RectangleKeyListener extends KeyAdapter
@@ -249,290 +249,235 @@ public class MainGUI extends JFrame
         public void keyReleased(KeyEvent e)
         {
             int key = e.getKeyCode();
-            if(key == KeyEvent.VK_0)
+            for(int r = 0; r < mainBoard.getCells()[0].length; r++)
             {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
+                for(int c = 0; c < mainBoard.getCells()[1].length; c++)
                 {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
+
+                    if(key == KeyEvent.VK_0)
                     {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
                         if(mainBoard.getCells()[r][c].getIsHighlighted())
                         {
                             mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
                             mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
+                            mainBoard.getCells()[r][c].getX(),
+                            mainBoard.getCells()[r][c].getY(),
+                            mainBoard.getCells()[r][c].getWidth(),
+                            mainBoard.getCells()[r][c].getHeight());
                         }
+
                     }
-                }
-            }
-            else if(key == KeyEvent.VK_1)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
+                    else if(key == KeyEvent.VK_1)
                     {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
                         if(mainBoard.getCells()[r][c].getIsHighlighted())
                         {
                             mainBoard.getCells()[r][c].setPiece(new PieceObject(1));
                             mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
+                            mainBoard.getCells()[r][c].getX(),
+                            mainBoard.getCells()[r][c].getY(),
+                            mainBoard.getCells()[r][c].getWidth(),
+                            mainBoard.getCells()[r][c].getHeight());
                         }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_2)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(2));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_3)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(3));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_4)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(4));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_5)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(5));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_6)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(6));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_7)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(7));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }else if(key == KeyEvent.VK_8)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(8));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_9)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(9));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_B)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject('b'));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_0)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }else if(key == KeyEvent.VK_0)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_0)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
-            else if(key == KeyEvent.VK_0)
-            {
-                //mainBoard.getCells()[r][c].setPiece(null);
-                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
-                {
-                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
-                    {
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
-                    }
-                }
-            }
 
+                    }
+                    else if(key == KeyEvent.VK_2)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(2));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                    mainBoard.getCells()[r][c].getX(),
+                                    mainBoard.getCells()[r][c].getY(),
+                                    mainBoard.getCells()[r][c].getWidth(),
+                                    mainBoard.getCells()[r][c].getHeight());
+                                }
+                    }
+                    else if(key == KeyEvent.VK_3)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(3));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_4)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(4));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_5)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(5));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_6)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(6));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_7)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(7));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }else if(key == KeyEvent.VK_8)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(8));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_9)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(9));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_B)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject('b'));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_0)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }else if(key == KeyEvent.VK_0)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_0)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                                if(mainBoard.getCells()[r][c].getIsHighlighted())
+                                {
+                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
+                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                            mainBoard.getCells()[r][c].getX(),
+                                            mainBoard.getCells()[r][c].getY(),
+                                            mainBoard.getCells()[r][c].getWidth(),
+                                            mainBoard.getCells()[r][c].getHeight());
+                                }
+
+                    }
+                    else if(key == KeyEvent.VK_0)
+                    {
+                        //mainBoard.getCells()[r][c].setPiece(null);
+
+                        if(mainBoard.getCells()[r][c].getIsHighlighted())
+                        {
+                            mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
+                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                    mainBoard.getCells()[r][c].getX(),
+                                    mainBoard.getCells()[r][c].getY(),
+                                    mainBoard.getCells()[r][c].getWidth(),
+                                    mainBoard.getCells()[r][c].getHeight());
+                        }
+                    }
+                    mainBoard.getCells()[r][c].setIsHighlighted(false);
+                }
+            }
 
 
         }
