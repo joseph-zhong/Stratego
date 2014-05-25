@@ -4,11 +4,13 @@
  */
 package GUI.Panel;
 
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,6 +23,7 @@ public class MainFrameCode extends JFrame
     private javax.swing.JButton HighScoresButton;
     private javax.swing.JButton QuitButton;
 
+    private JPanel MainPanel;
 
     /**
      * Creates new form MainFrame
@@ -120,6 +123,28 @@ public class MainFrameCode extends JFrame
     private void StartButtonMouseReleased(MouseEvent evt)
     {
         System.out.println("Start Game");
+        setSize(new Dimension(900, 700));
+        setLocation(200, 25);
+        getContentPane().removeAll();
+        getContentPane().repaint();
+        createPanel();
+    }
+
+    private void createPanel()
+    {
+        MainPanel = new JPanel();
+        GroupLayout MainPanelLayout = new GroupLayout(MainPanel);
+        MainPanel.setLayout(MainPanelLayout);
+        MainPanelLayout.setHorizontalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 541, Short.MAX_VALUE)
+        );
+        MainPanelLayout.setVerticalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 541, Short.MAX_VALUE)
+        );
+
+        System.out.println("Panel Success");
     }
 
     private void InstructionsMouseReleased(MouseEvent evt)
