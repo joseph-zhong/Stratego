@@ -8,6 +8,11 @@ package Pieces;
  *
  * @author Adarsh
  */
-public class Lieutenant {
+public class Lieutenant extends Piece
+{
+    public Lieutenant()
+    {
+        super(5, 1);
+    }
 
 }

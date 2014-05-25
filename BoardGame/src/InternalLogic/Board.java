@@ -10,7 +10,8 @@ import Pieces.Piece;
  *
  * @author admin
  */
-public class Board {
+public class Board
+{
     private Cell[][] grid = new Cell[10][10];
     public Board()
     {
@@ -116,7 +117,7 @@ public class Board {
     }
     //move() returns whether there was an attack and values should be revealed
     public boolean move(int currentRow, int currentCol, int targetRow, int targetCol)
-    { 
+    {
         Piece pieceInTargetCell = getCell(targetRow, targetCol).get();
         Piece pieceInCurrentCell = getCell(currentRow, currentCol).get();
         //if target is empty, move to target location

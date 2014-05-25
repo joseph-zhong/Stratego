@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.event.MouseInputAdapter;
+import InternalLogic.*;
+import Pieces.*;
 
 /**
  *
@@ -58,6 +60,8 @@ public class MainGUI extends JFrame
     // private static ArrayList<Rectangle> Buttons;
     private static MainMenuGUI primaryMenu;
 
+    private static GameControl MainManager;
+
     private static void initComponents()
     {
         mainPanel = new DrawingPanel(PANEL_WIDTH, PANEL_HEIGHT);
@@ -65,6 +69,7 @@ public class MainGUI extends JFrame
         mainBoard = new GameBoardGUI();
         menuStage = true;
         gameStage = true;
+        MainManager = new GameControl();
     }
 
     public static void main(String[] arg)
@@ -97,6 +102,7 @@ public class MainGUI extends JFrame
             primaryMenu.addButton(new Button(PANEL_WIDTH / ));
         }
 */
+
         primaryMenu.displayAll(mainGraphics);
 
 
@@ -233,20 +239,8 @@ public class MainGUI extends JFrame
             panel = _panel;
         }
 
-           /** Handle the key typed event from the text field. */
-        public void keyTyped(KeyEvent e)
-        {
-
-        }
-
         /** Handle the key-pressed event from the text field. */
         public void keyPressed(KeyEvent e)
-        {
-
-        }
-
-        /** Handle the key-released event from the text field. */
-        public void keyReleased(KeyEvent e)
         {
             int key = e.getKeyCode();
             for(int r = 0; r < mainBoard.getCells()[0].length; r++)
@@ -262,10 +256,11 @@ public class MainGUI extends JFrame
                         {
                             mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
                             mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                            mainBoard.getCells()[r][c].getX(),
-                            mainBoard.getCells()[r][c].getY(),
-                            mainBoard.getCells()[r][c].getWidth(),
-                            mainBoard.getCells()[r][c].getHeight());
+                                mainBoard.getCells()[r][c].getX(),
+                                mainBoard.getCells()[r][c].getY(),
+                                mainBoard.getCells()[r][c].getWidth(),
+                                mainBoard.getCells()[r][c].getHeight());
+                            MainManager.getBoard().getCell(r, c).put(new Marshal());
                         }
 
                     }
@@ -276,11 +271,12 @@ public class MainGUI extends JFrame
                         if(mainBoard.getCells()[r][c].getIsHighlighted())
                         {
                             mainBoard.getCells()[r][c].setPiece(new PieceObject(1));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                            mainBoard.getCells()[r][c].getX(),
-                            mainBoard.getCells()[r][c].getY(),
-                            mainBoard.getCells()[r][c].getWidth(),
-                            mainBoard.getCells()[r][c].getHeight());
+                             mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                mainBoard.getCells()[r][c].getX(),
+                                mainBoard.getCells()[r][c].getY(),
+                                mainBoard.getCells()[r][c].getWidth(),
+                                mainBoard.getCells()[r][c].getHeight());
+                            MainManager.getBoard().getCell(r, c).put(new Flag());
                         }
 
                     }
@@ -292,10 +288,11 @@ public class MainGUI extends JFrame
                                 {
                                     mainBoard.getCells()[r][c].setPiece(new PieceObject(2));
                                     mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
+                                        mainBoard.getCells()[r][c].getX(),
+                                        mainBoard.getCells()[r][c].getY(),
+                                        mainBoard.getCells()[r][c].getWidth(),
+                                        mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Scout());
                                 }
                     }
                     else if(key == KeyEvent.VK_3)
@@ -310,6 +307,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Miner());
                                 }
 
                     }
@@ -325,6 +323,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Sergeant());
                                 }
 
                     }
@@ -340,6 +339,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Lieutenant());
                                 }
 
                     }
@@ -355,6 +355,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Captain());
                                 }
 
                     }
@@ -370,6 +371,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Major());
                                 }
 
                     }else if(key == KeyEvent.VK_8)
@@ -384,6 +386,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Colonel());
                                 }
 
                     }
@@ -399,6 +402,7 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new General());
                                 }
 
                     }
@@ -414,68 +418,12 @@ public class MainGUI extends JFrame
                                             mainBoard.getCells()[r][c].getY(),
                                             mainBoard.getCells()[r][c].getWidth(),
                                             mainBoard.getCells()[r][c].getHeight());
+                                    MainManager.getBoard().getCell(r, c).put(new Bomb());
                                 }
 
-                    }
-                    else if(key == KeyEvent.VK_0)
-                    {
-                        //mainBoard.getCells()[r][c].setPiece(null);
-
-                                if(mainBoard.getCells()[r][c].getIsHighlighted())
-                                {
-                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                            mainBoard.getCells()[r][c].getX(),
-                                            mainBoard.getCells()[r][c].getY(),
-                                            mainBoard.getCells()[r][c].getWidth(),
-                                            mainBoard.getCells()[r][c].getHeight());
-                                }
-
-                    }else if(key == KeyEvent.VK_0)
-                    {
-                        //mainBoard.getCells()[r][c].setPiece(null);
-
-                                if(mainBoard.getCells()[r][c].getIsHighlighted())
-                                {
-                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                            mainBoard.getCells()[r][c].getX(),
-                                            mainBoard.getCells()[r][c].getY(),
-                                            mainBoard.getCells()[r][c].getWidth(),
-                                            mainBoard.getCells()[r][c].getHeight());
-                                }
-
-                    }
-                    else if(key == KeyEvent.VK_0)
-                    {
-                        //mainBoard.getCells()[r][c].setPiece(null);
-
-                                if(mainBoard.getCells()[r][c].getIsHighlighted())
-                                {
-                                    mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                                    mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                            mainBoard.getCells()[r][c].getX(),
-                                            mainBoard.getCells()[r][c].getY(),
-                                            mainBoard.getCells()[r][c].getWidth(),
-                                            mainBoard.getCells()[r][c].getHeight());
-                                }
-
-                    }
-                    else if(key == KeyEvent.VK_0)
-                    {
-                        //mainBoard.getCells()[r][c].setPiece(null);
-
-                        if(mainBoard.getCells()[r][c].getIsHighlighted())
-                        {
-                            mainBoard.getCells()[r][c].setPiece(new PieceObject(0));
-                            mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
-                                    mainBoard.getCells()[r][c].getX(),
-                                    mainBoard.getCells()[r][c].getY(),
-                                    mainBoard.getCells()[r][c].getWidth(),
-                                    mainBoard.getCells()[r][c].getHeight());
-                        }
                     }
                     mainBoard.getCells()[r][c].setIsHighlighted(false);
+
                 }
             }
 
