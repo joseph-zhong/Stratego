@@ -35,6 +35,7 @@ public class MainGUI extends JFrame
     public static final int BUTTON_HEIGHT = 100;
 
     private static boolean menuStage;
+    private static boolean gameStage;
 
     // main Graphics
     private static Graphics mainGraphics;
@@ -54,6 +55,7 @@ public class MainGUI extends JFrame
         mainGraphics = mainPanel.getGraphics();
         mainBoard = new GameBoardGUI();
         menuStage = true;
+        gameStage = true;
     }
 
     public static void main(String[] arg)
@@ -131,12 +133,22 @@ public class MainGUI extends JFrame
                     && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75)
                     && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75) + BUTTON_HEIGHT)
                 {
+                    menuStage = false;
                     System.out.println("Start Game Instigated");
                     panel.clear();
                     mainBoard.buildGameBoard(GAME_WIDTH / 10);
-                    for(int i = 0; i < mainBoard.getCells(); i++)
+                    /*
+                    for(int i = 0; i < mainBoard.getCells().size(); i++)
                     {
-                        mainBoard.getCell(i).draw(mainGraphics);
+                        mainBoard.getCells().get(i).draw(mainGraphics);
+                    }
+                    * */
+                    for(int r = 0; r < mainBoard.getCells()[0].length; r++)
+                    {
+                        for(int c = 0; c < mainBoard.getCells()[1].length; c++)
+                        {
+                            mainBoard.getCells()[r][c].draw(mainGraphics);
+                        }
                     }
                 }
                 else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
@@ -153,6 +165,7 @@ public class MainGUI extends JFrame
                     && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75) + BUTTON_HEIGHT)
                 {
                     System.out.println("Hall Of Fame Instigated");
+
                 }
                 else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
                     && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
@@ -163,7 +176,16 @@ public class MainGUI extends JFrame
                     System.exit(0);
                 }
             }
-            menuStage = false;
-        }
+            else if(gameStage)
+            {
+                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
+                {
+                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
+                    {
+                        
+                    }
+                }
+            }
+        }// end of checkClick
     }
 }
