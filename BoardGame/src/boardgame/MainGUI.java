@@ -8,7 +8,11 @@ package boardgame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.event.MouseInputAdapter;
 
 /**
  *
@@ -20,7 +24,7 @@ import java.util.ArrayList;
  *
  **/
 
-public class MainGUI
+public class MainGUI extends JFrame
 {
     // constants for the drawing panel size, tile sizes, and # of tiles
     public static final int PANEL_HEIGHT = 600;
@@ -30,8 +34,6 @@ public class MainGUI
 
     // main Panel for overall display
     private static DrawingPanel mainPanel;
-
-    private static final int options = 13;
 
     private static enum BUTTON
     {
@@ -88,10 +90,67 @@ public class MainGUI
         // listen for key presses
         RectangleKeyListener listener = new RectangleKeyListener(panel, list);
         panel.addKeyListener(listener);
-
-        // listen for mouse clicks
-        RectangleMouseListener listener2 = new RectangleMouseListener(panel, list);
-        panel.addMouseListener(listener2);
         * */
+        // listen for mouse clicks
+        RectangleMouseListener listener2 = new RectangleMouseListener(panel);
+        panel.addMouseListener(listener2);
+
+    }
+
+    // A class for responding to mouse clicks on the drawing panel.
+    public static class RectangleMouseListener extends MouseInputAdapter
+    {
+        private DrawingPanel panel;
+
+
+        public RectangleMouseListener(DrawingPanel panel)
+        {
+            this.panel = panel;
+        }
+
+        @Override
+        public void mousePressed(MouseEvent event)
+        {
+            int x = event.getX() / panel.getZoom();
+            int y = event.getY() / panel.getZoom();
+
+            System.out.println(x + " " + y);
+
+            checkClick(x, y);
+        }
+
+        private void checkClick(int x, int y)
+        {
+            if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75)
+                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75) + BUTTON_HEIGHT)
+            {
+                System.out.println("Start Game Instigated");
+            }
+            else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25)
+                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25) + BUTTON_HEIGHT)
+            {
+                System.out.println("Instructions Instigated");
+                panel.clear();
+            }
+            else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75)
+                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75) + BUTTON_HEIGHT)
+            {
+                System.out.println("Hall Of Fame Instigated");
+            }
+            else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
+                && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
+                && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25)
+                && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25) + BUTTON_HEIGHT)
+            {
+                System.out.println("Quit Instigated");
+                System.exit(0);
+            }
+        }
     }
 }
