@@ -2,15 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package InternalLogic;
+package Pieces;
 
 /**
  *
  * @author Adarsh
  */
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import InternalLogic.*;
 
 public abstract class Piece
 {
