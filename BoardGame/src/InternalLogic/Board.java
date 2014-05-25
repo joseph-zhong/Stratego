@@ -4,6 +4,8 @@
  */
 package InternalLogic;
 
+import Pieces.*;
+
 /**
  *
  * @author admin
