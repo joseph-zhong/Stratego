@@ -62,7 +62,7 @@ public class GameBoardGUI
                 else
                 {
                     tempCell = new CellGUI(r * CellLength, c * CellLength,
-                        CellLength, CellLength, Color.ORANGE, ".", _isWater);
+                        CellLength, CellLength, Color.GREEN, ".", _isWater);
                 }
 
                 //Cells.add(tempCell);

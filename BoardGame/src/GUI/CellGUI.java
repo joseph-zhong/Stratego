@@ -36,7 +36,7 @@ public class CellGUI extends ButtonGUI
         super(_x, _y, _width, _height, _c, _name);
         isPossibleMove = true;
         isWater = _isWater;
-        
+
     }
 
     /** Draws this button using the given graphics pen. */
@@ -48,9 +48,10 @@ public class CellGUI extends ButtonGUI
         g.drawRect(getX(), getY(), getWidth(), getHeight());
     }
 
-    public void setColor(Color _c)
+    public void setColor(Graphics g, Color _c)
     {
-
+        g.setColor(_c);
+        g.drawRect(getX(), getY(), getWidth(), getHeight());
     }
 
     public void setPiece(PieceObject _PieceObject)

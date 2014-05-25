@@ -31,6 +31,12 @@ public class MainGUI extends JFrame
     public static final int PANEL_HEIGHT = 600;
     public static final int PANEL_WIDTH = 1000;
     public static final int GAME_WIDTH = 600;
+
+    public static final int GAME_FIGHT = 200;
+    public static final int GAME_DETAIL= 200;
+    public static final int GAME_GLOBAL = 150;
+    public static final int GAME_CONSOLE = 50;
+
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 100;
 
@@ -99,14 +105,12 @@ public class MainGUI extends JFrame
         // listen for mouse clicks
         RectangleMouseListener listener2 = new RectangleMouseListener(mainPanel);
         mainPanel.addMouseListener(listener2);
-
     }
 
     // A class for responding to mouse clicks on the drawing panel.
     public static class RectangleMouseListener extends MouseInputAdapter
     {
         private DrawingPanel panel;
-
 
         public RectangleMouseListener(DrawingPanel _panel)
         {
@@ -121,10 +125,10 @@ public class MainGUI extends JFrame
 
             System.out.println(x + " " + y);
 
-            checkClick(x, y);
+            checkClick(evt, x, y);
         }
 
-        private void checkClick(int x, int y)
+        private void checkClick(MouseEvent _e, int x, int y)
         {
             if(menuStage)
             {
@@ -158,6 +162,8 @@ public class MainGUI extends JFrame
                 {
                     System.out.println("Instructions Instigated");
                     panel.clear();
+                    menuStage = false;
+                    gameStage = false;
                 }
                 else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
                     && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
@@ -188,7 +194,7 @@ public class MainGUI extends JFrame
                             && y < mainBoard.getCells()[r][c].getY() + mainBoard.getCells()[r][c].getHeight())
                         {
                             System.out.println("Cell click detected: " + r + ", " + c);
-                            mainBoard.getCells()[r][c].setColor(mainGraphics, Color.GREEN);
+                            mainBoard.getCells()[r][c].setColor(mainGraphics, Color.MAGENTA);
                         }
                     }
                 }
