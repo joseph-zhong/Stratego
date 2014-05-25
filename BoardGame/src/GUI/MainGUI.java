@@ -182,7 +182,14 @@ public class MainGUI extends JFrame
                 {
                     for(int c = 0; c < mainBoard.getCells()[1].length; c++)
                     {
-                        
+                        if(x > mainBoard.getCells()[r][c].getX()
+                            && x < mainBoard.getCells()[r][c].getX() + mainBoard.getCells()[r][c].getWidth()
+                            && y > mainBoard.getCells()[r][c].getY()
+                            && y < mainBoard.getCells()[r][c].getY() + mainBoard.getCells()[r][c].getHeight())
+                        {
+                            System.out.println("Cell click detected: " + r + ", " + c);
+                            mainBoard.getCells()[r][c].setColor(mainGraphics, Color.GREEN);
+                        }
                     }
                 }
             }
