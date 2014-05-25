@@ -126,7 +126,9 @@ public class Board
         return false;
     }
     
-    public void move(Piece p, Cell target)
+    
+    //move() returns whether there was an attack and values should be revealed
+    public boolean move(Piece p, Cell target)
     {
         Piece pieceInTargetCell = grid[target.getRow()][target.getCol()];
         Cell currentCell =  findPieceInGrid(p);
@@ -134,6 +136,7 @@ public class Board
         if( pieceInTargetCell == null)
         {
             put(p, target);
+            return false;
         }
         //otherwise attack piece
         else
@@ -148,6 +151,7 @@ public class Board
             {
                 grid[currentCell.getRow()][currentCell.getCol()] = null;
             }
+            return true;
         }
     }
 
