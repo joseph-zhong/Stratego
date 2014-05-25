@@ -5,6 +5,8 @@
 
 package GUI;
 
+import java.awt.image.BufferedImage;
+
 /**
  *
  *  Joseph Zhong
@@ -15,7 +17,17 @@ package GUI;
  *
  **/
 
-public class PieceObject extends BufferedImage
+public class PieceObject
 {
+    private BufferedImage PieceImage;
 
+    public PieceObject()
+    {
+        PieceImage = null;
+    }
+
+    public PieceObject(BufferedImage _PieceImage)
+    {
+        PieceImage = _PieceImage;
+    }
 }
