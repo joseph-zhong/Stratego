@@ -54,6 +54,9 @@ abstract class Piece
     public void setCell(Cell cell)
     { location = cell; }
     
+    public void setCell(int row, int col)
+    { location = new Cell(row, col); }
+    
     public int getPower()
     { return power; }
 
