@@ -9,6 +9,7 @@ package InternalLogic;
  * @author Adarsh
  */
 import java.util.Random;
+import Pieces.*;
 public class Computer
 {
     public static final int forget = 4; //The number of turns before AI forgets player move

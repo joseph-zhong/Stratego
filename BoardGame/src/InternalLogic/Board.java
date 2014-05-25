@@ -36,12 +36,6 @@ public class Board
         }
         System.out.println(b.toString());
     }
-    public Piece put(Piece p, Cell target)
-    {
-        Piece temp = grid[target.getRow()][target.getCol()];
-        grid[target.getRow()][target.getCol()] = p;
-        return temp;
-    }
 
     public boolean canMove(Piece p, Cell target)
     {
@@ -178,6 +172,26 @@ public class Board
         return str;
     }
 
+    public void movePieceTo(Piece p, Cell c)
+    {
+        Cell temp = p.getCell();
+        put(p, c);
+        put(null, temp);
+    }
+    
+    public Piece get(Cell c)
+    {
+        return grid[c.getRow()][c.getCol()];
+    }
+    public void put(Piece p, Cell c)
+    {
+        if(p != null)
+        {
+            p.setCell(c);
+        } 
+        grid[c.getRow()][c.getCol()] = p;
+    }
+    
     private Cell findPieceInGrid(Piece p)
     {
         for(int row = 0; row < grid.length; row++)
