@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package boardgame;
+package InternalLogic;
 
 /**
  *
@@ -191,12 +191,18 @@ public class Computer
         }
     }
     
-    public void makeRandMove(ArrayList<Piece> availablePieces)
+    
+    public void makeRandMove(int startR, int startC)
     {
-        Piece chosen = availablePieces.get(r.nextInt(availablePieces.size()));
-        chosen
-        
+       int rRow = r.nextInt(10);
+       int rCol = r.nextInt(10);
+       
+        while (!board.canMove(startR, startC, rRow, rCol))
+        {
+            rRow = r.nextInt(10);
+            rCol = r.nextInt(10);
+        }
+        board.getCell(rRow, rCol).put(board.getCell(startR, startC).get());
+        board.getCell(startR, startC).removePiece();
     }
-    
-    
 }

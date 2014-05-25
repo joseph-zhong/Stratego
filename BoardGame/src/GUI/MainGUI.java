@@ -31,10 +31,17 @@ public class MainGUI extends JFrame
     public static final int PANEL_HEIGHT = 600;
     public static final int PANEL_WIDTH = 1000;
     public static final int GAME_WIDTH = 600;
+
+    public static final int GAME_FIGHT = 200;
+    public static final int GAME_DETAIL= 200;
+    public static final int GAME_GLOBAL = 150;
+    public static final int GAME_CONSOLE = 50;
+
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 100;
 
     private static boolean menuStage;
+    private static boolean gameStage;
 
     // main Graphics
     private static Graphics mainGraphics;
@@ -54,6 +61,7 @@ public class MainGUI extends JFrame
         mainGraphics = mainPanel.getGraphics();
         mainBoard = new GameBoardGUI();
         menuStage = true;
+        gameStage = true;
     }
 
     public static void main(String[] arg)
@@ -97,14 +105,12 @@ public class MainGUI extends JFrame
         // listen for mouse clicks
         RectangleMouseListener listener2 = new RectangleMouseListener(mainPanel);
         mainPanel.addMouseListener(listener2);
-
     }
 
     // A class for responding to mouse clicks on the drawing panel.
     public static class RectangleMouseListener extends MouseInputAdapter
     {
         private DrawingPanel panel;
-
 
         public RectangleMouseListener(DrawingPanel _panel)
         {
@@ -119,10 +125,10 @@ public class MainGUI extends JFrame
 
             System.out.println(x + " " + y);
 
-            checkClick(x, y);
+            checkClick(evt, x, y);
         }
 
-        private void checkClick(int x, int y)
+        private void checkClick(MouseEvent _e, int x, int y)
         {
             if(menuStage)
             {
@@ -131,12 +137,22 @@ public class MainGUI extends JFrame
                     && y > (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75)
                     && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75) + BUTTON_HEIGHT)
                 {
+                    menuStage = false;
                     System.out.println("Start Game Instigated");
                     panel.clear();
                     mainBoard.buildGameBoard(GAME_WIDTH / 10);
-                    for(int i = 0; i < mainBoard.getCells(); i++)
+                    /*
+                    for(int i = 0; i < mainBoard.getCells().size(); i++)
                     {
-                        mainBoard.getCell(i).draw(mainGraphics);
+                        mainBoard.getCells().get(i).draw(mainGraphics);
+                    }
+                    * */
+                    for(int r = 0; r < mainBoard.getCells()[0].length; r++)
+                    {
+                        for(int c = 0; c < mainBoard.getCells()[1].length; c++)
+                        {
+                            mainBoard.getCells()[r][c].draw(mainGraphics);
+                        }
                     }
                 }
                 else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
@@ -146,6 +162,8 @@ public class MainGUI extends JFrame
                 {
                     System.out.println("Instructions Instigated");
                     panel.clear();
+                    menuStage = false;
+                    gameStage = false;
                 }
                 else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
                     && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
@@ -153,6 +171,7 @@ public class MainGUI extends JFrame
                     && y < (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75) + BUTTON_HEIGHT)
                 {
                     System.out.println("Hall Of Fame Instigated");
+
                 }
                 else if(x > (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2)
                     && x < (PANEL_WIDTH / 2 - BUTTON_WIDTH / 2 + BUTTON_WIDTH)
@@ -163,7 +182,23 @@ public class MainGUI extends JFrame
                     System.exit(0);
                 }
             }
-            menuStage = false;
-        }
+            else if(gameStage)
+            {
+                for(int r = 0; r < mainBoard.getCells()[0].length; r++)
+                {
+                    for(int c = 0; c < mainBoard.getCells()[1].length; c++)
+                    {
+                        if(x > mainBoard.getCells()[r][c].getX()
+                            && x < mainBoard.getCells()[r][c].getX() + mainBoard.getCells()[r][c].getWidth()
+                            && y > mainBoard.getCells()[r][c].getY()
+                            && y < mainBoard.getCells()[r][c].getY() + mainBoard.getCells()[r][c].getHeight())
+                        {
+                            System.out.println("Cell click detected: " + r + ", " + c);
+                            mainBoard.getCells()[r][c].setColor(mainGraphics, Color.MAGENTA);
+                        }
+                    }
+                }
+            }
+        }// end of checkClick
     }
 }
