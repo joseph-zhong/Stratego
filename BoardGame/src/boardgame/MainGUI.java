@@ -5,6 +5,7 @@
 
 package boardgame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -22,13 +23,29 @@ import java.util.ArrayList;
 public class MainGUI
 {
     // constants for the drawing panel size, tile sizes, and # of tiles
-    public static final int HEIGHT = 600;
-    public static final int WIDTH = 800;
-    public static final int MIN_SIZE = 100;
-    public static final int MAX_SIZE = 200;
+    public static final int PANEL_HEIGHT = 600;
+    public static final int PANEL_WIDTH = 800;
+    public static final int BUTTON_WIDTH = 200;
+    public static final int BUTTON_HEIGHT = 100;
 
     // main Panel for overall display
     private static DrawingPanel mainPanel;
+
+    private static final int options = 13;
+
+    private static enum BUTTON
+    {
+        StartButton("Start Game", 1), InstructionsButton("Instructions", 2);
+
+        private String name;
+        private int index;
+
+        private BUTTON(String _name, int _index)
+        {
+            name = _name;
+            index = _index;
+        }
+    }
 
     // contents for MainPanel
     // private static ArrayList<Rectangle> Buttons;
@@ -36,18 +53,38 @@ public class MainGUI
 
     public static void main(String[] arg)
     {
-        DrawingPanel panel = new DrawingPanel(WIDTH, HEIGHT);
+        DrawingPanel panel = new DrawingPanel(PANEL_WIDTH, PANEL_HEIGHT);
         Graphics g = panel.getGraphics();
 
-        /*
-        // create several random tiles and put them into a manager
-        TileManager list = new TileManager();
-        for (int i = 0; i < TILES; i++) {
-            Tile tile = makeRandomTile();
-            list.addTile(tile);
-        }
-        list.drawAll(g);
+        primaryMenu = new MainMenuGUI();
 
+        ButtonGUI StartButton = new ButtonGUI(PANEL_WIDTH / 2 - BUTTON_WIDTH / 2,
+            (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 5.75), BUTTON_WIDTH, BUTTON_HEIGHT,
+            Color.ORANGE, "Start Game");
+        primaryMenu.addButton(StartButton);
+
+        ButtonGUI InstructionsButton = new ButtonGUI(PANEL_WIDTH / 2 - BUTTON_WIDTH / 2,
+            (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 4.25), BUTTON_WIDTH, BUTTON_HEIGHT, Color.ORANGE, "Instructions");
+        primaryMenu.addButton(InstructionsButton);
+
+        ButtonGUI HallOfFameButton = new ButtonGUI(PANEL_WIDTH / 2 - BUTTON_WIDTH / 2,
+            (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 2.75), BUTTON_WIDTH, BUTTON_HEIGHT,
+            Color.ORANGE, "Hall of Fame");
+        primaryMenu.addButton(HallOfFameButton);
+
+        ButtonGUI QuitButton = new ButtonGUI(PANEL_WIDTH / 2 - BUTTON_WIDTH / 2,
+            (int) (PANEL_HEIGHT - BUTTON_HEIGHT * 1.25), BUTTON_WIDTH, BUTTON_HEIGHT, Color.ORANGE, "Quit");
+        primaryMenu.addButton(QuitButton);
+
+        /*
+        for(int i = 0; i < options; i++)
+        {
+            primaryMenu.addButton(new Button(PANEL_WIDTH / ));
+        }
+*/
+        primaryMenu.displayAll(g);
+
+        /*
         // listen for key presses
         RectangleKeyListener listener = new RectangleKeyListener(panel, list);
         panel.addKeyListener(listener);
