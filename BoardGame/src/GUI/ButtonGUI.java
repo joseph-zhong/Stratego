@@ -32,6 +32,8 @@ public class ButtonGUI
 
     private String name;
 
+    private int highlighted;
+
     public ButtonGUI(int _x, int _y, int _width, int _height, Color _c, String _name)
     {
         x = _x;
@@ -40,7 +42,10 @@ public class ButtonGUI
         height = _height;
         color = _c;
         name = _name;
+        highlighted = 0;
     }
+
+    
 
     /** Draws this button using the given graphics pen. */
     public void draw(Graphics g)

@@ -22,6 +22,8 @@ public class GameBoardGUI
 {
     private static final int LENGTH = 10;
 
+    private static int highlighted;
+
     //private ArrayList<CellGUI> Cells;
     private CellGUI Cells[][];
 
@@ -29,11 +31,34 @@ public class GameBoardGUI
     {
         //Cells = new ArrayList<>();
         Cells = new CellGUI[LENGTH][LENGTH];
-
+        highlighted = 0;
         /*
         CellGUI c1 = new CellGUI(20, 20, 10, 10, Color.BLACK, "Test");
         Cells.add(c1);
         * */
+    }
+
+    public boolean addHighlighted()
+    {
+        if(highlighted > 1)
+        {
+            return false;
+        }
+        highlighted++;
+        return true;
+    }
+
+    public void subtractHighlighted()
+    {
+        if(highlighted > 0)
+        {
+            highlighted--;
+        }
+    }
+
+    public int getHighlighted()
+    {
+        return highlighted;
     }
 
     public void buildGameBoard(int CellLength)
