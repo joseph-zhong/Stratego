@@ -30,13 +30,14 @@ public class CellGUI extends ButtonGUI
 
     private boolean isPossibleMove;
     private boolean isWater;
+    private boolean isHighlighted;
 
     public CellGUI(int _x, int _y, int _width, int _height, Color _c, String _name, boolean _isWater)
     {
         super(_x, _y, _width, _height, _c, _name);
         isPossibleMove = true;
         isWater = _isWater;
-
+        isHighlighted = false;
     }
 
     /** Draws this button using the given graphics pen. */
@@ -79,6 +80,16 @@ public class CellGUI extends ButtonGUI
     public boolean getIsWater()
     {
         return isWater;
+    }
+
+    public void setIsHighlighted(boolean setIsHighlighted)
+    {
+        isHighlighted = setIsHighlighted;
+    }
+
+    public boolean getIsHighlighted()
+    {
+        return isHighlighted;
     }
 
     // A class for responding to mouse clicks on the drawing panel.
