@@ -5,7 +5,8 @@
 
 package boardgame;
 
-import java.awt.Button;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 
 /**
@@ -20,5 +21,23 @@ import java.util.ArrayList;
 
 public class MainMenuGUI
 {
-    private static ArrayList<Button> menuContents;
+    private static ArrayList<ButtonGUI> MenuContents;
+
+    public MainMenuGUI()
+    {
+        MenuContents = new ArrayList<>();
+    }
+
+    public void displayAll(Graphics g)
+    {
+        for(int i = 0; i < MenuContents.size(); i++)
+        {
+            MenuContents.get(i).draw(g);
+        }
+    }
+
+    public void addButton(ButtonGUI b)
+    {
+        MenuContents.add(b);
+    }
 }
