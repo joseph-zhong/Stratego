@@ -28,7 +28,7 @@ import javax.swing.event.MouseInputAdapter;
 public class MainGUI extends JFrame
 {
     // constants for the drawing panel size, tile sizes, and # of tiles
-    public static final int PANEL_HEIGHT = 800;
+    public static final int PANEL_HEIGHT = 600;
     public static final int PANEL_WIDTH = 800;
     public static final int BUTTON_WIDTH = 200;
     public static final int BUTTON_HEIGHT = 100;
