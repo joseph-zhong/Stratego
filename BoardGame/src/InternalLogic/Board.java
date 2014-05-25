@@ -4,7 +4,7 @@
  */
 package InternalLogic;
 
-import Pieces.Piece;
+import Pieces.*;
 
 /**
  *
@@ -22,6 +22,22 @@ public class Board
                 grid[row][col] = new Cell();
             }
         }
+    }
+    public static void main(String[] args)
+    {
+        Board b = new Board();
+        b.getCell(3, 4).put(new Marshal());
+        System.out.println(b.toString());
+
+        b.getCell(3, 5).put(new Marshal());
+        System.out.println(b.toString());
+        
+        if(b.canMove(3,4,3,5))
+        {
+            b.move(3,4,3,5);
+        }
+        System.out.println(b.toString());
+
     }
     public Cell getCell(int row, int col)
     {
@@ -142,5 +158,26 @@ public class Board
             }
             return true;
         }
+    }
+    public String toString()
+    {
+        String str = "";
+        for (int i = 0; i < grid.length; i++)
+        {
+            for(int j = 0; j < grid[i].length; j++)
+            {
+                if(getCell(i,j).get() == null)
+                {
+                    str += "X ";
+                }
+                else
+                {
+                    str += (getCell(i,j).get().toString() + " ");
+
+                }
+            }
+            str += "\n";
+        }
+        return str;
     }
 }
