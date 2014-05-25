@@ -4,6 +4,8 @@
  */
 package InternalLogic;
 
+import Pieces.Piece;
+
 /**
  *
  * @author admin
@@ -111,5 +113,33 @@ public class Board {
             }
         }
         return false;
+    }
+    //move() returns whether there was an attack and values should be revealed
+    public boolean move(int currentRow, int currentCol, int targetRow, int targetCol)
+    { 
+        Piece pieceInTargetCell = getCell(targetRow, targetCol).get();
+        Piece pieceInCurrentCell = getCell(currentRow, currentCol).get();
+        //if target is empty, move to target location
+        if( pieceInTargetCell == null)
+        {
+            getCell(targetRow, targetCol).put(pieceInCurrentCell);
+            getCell(currentRow, currentCol).removePiece();
+            return false;
+        }
+        //otherwise attack piece
+        else
+        {
+            //if attack is victorious, replace cell with piece
+            if(pieceInCurrentCell.attack(pieceInTargetCell))
+            {
+                getCell(targetRow, targetCol).put(pieceInCurrentCell);
+            }
+            //else, remove piece from grid
+            else
+            {
+                getCell(currentRow, currentCol).removePiece();
+            }
+            return true;
+        }
     }
 }
