@@ -33,7 +33,7 @@ public class MainGUI extends JFrame
     public static final int GAME_WIDTH = 600;
 
     public static final int GAME_FIGHT = 200;
-    public static final int GAME_DETAIL= 200;
+    public static final int GAME_CELL= 200;
     public static final int GAME_GLOBAL = 150;
     public static final int GAME_CONSOLE = 50;
 
@@ -96,11 +96,10 @@ public class MainGUI extends JFrame
 */
         primaryMenu.displayAll(mainGraphics);
 
-        /*
+
         // listen for key presses
         RectangleKeyListener listener = new RectangleKeyListener(panel, list);
         panel.addKeyListener(listener);
-        * */
 
         // listen for mouse clicks
         RectangleMouseListener listener2 = new RectangleMouseListener(mainPanel);
@@ -206,6 +205,7 @@ public class MainGUI extends JFrame
                                 {
                                     mainBoard.getCells()[r][c].setIsHighlighted(true);
                                     mainBoard.getCells()[r][c].setColor(mainGraphics, Color.MAGENTA);
+                                    showCellHUD(mainGraphics);
                                 }
                             }
                         }
@@ -213,5 +213,11 @@ public class MainGUI extends JFrame
                 }
             }
         }// end of checkClick
+    }
+
+    private static void showCellHUD(Graphics g)
+    {
+        System.out.println("Enter number respresenting piece");
+        g.drawString("Enter number respresenting piece", GAME_WIDTH, PANEL_HEIGHT - GAME_CELL);
     }
 }
