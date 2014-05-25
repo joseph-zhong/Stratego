@@ -4,28 +4,30 @@
  */
 package InternalLogic;
 
-/**
- *
- * @author admin
- */
+import Pieces.*;
 public class Cell {
-    private int row;
-    private int col;
-    public Cell(int x, int y)
+    private Piece piece;
+    private boolean hasWater;
+    
+    public Cell()
     {
-        this.row = x;
-        this.col = y;
+        piece = null;
+        hasWater = false;
     }
-    public int getRow()
+    public void hasWater(boolean b)
     {
-        return row;
+        hasWater = b;
     }
-    public int getCol()
+    public void removePiece()
     {
-        return col;
+        piece = null;
     }
-    public boolean equals(Cell c)
+    public void put(Piece p)
     {
-        return row == c.getRow() && col == c.getRow();
+        piece = p;
+    }
+    public Piece get()
+    {
+        return piece;
     }
 }

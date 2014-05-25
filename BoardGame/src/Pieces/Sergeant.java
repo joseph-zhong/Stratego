@@ -12,6 +12,6 @@ public class Sergeant extends Piece
 {
     public Sergeant()
     {
-        super(4, 'n', 1, null);
+        super(4, 1);
     }
 }

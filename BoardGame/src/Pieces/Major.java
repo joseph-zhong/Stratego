@@ -12,6 +12,6 @@ public class Major extends Piece
 {
     public Major()
     {
-        super(7, 'n', 1, null);
+        super(7, 1);
     }
 }

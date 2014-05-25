@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Pieces;
+package InternalLogic;
 
 /**
  *
@@ -15,19 +15,13 @@ import InternalLogic.*;
 public abstract class Piece
 {
     private int power;
-    private char ability;
     private int distanceCapable;
-    private BufferedImage face;
-    
-    private Cell cell;
-    private Board board;
+    private String name;
 
-    public Piece(int p, char a, int d, BufferedImage f)
+    public Piece(int p, int d)
     {
         power = p;
-        ability = a;
         distanceCapable = d;
-        face = f;
     }
 
     public boolean attack(Piece p)
@@ -59,38 +53,8 @@ public abstract class Piece
     public int getPower()
     { return power; }
 
-    public char getAbility()
-    { return ability; }
-
     public int getDistanceCapable()
     { return distanceCapable; }
-
-    public Image getFace()
-    { return face; }
-    
-    public Cell getCell()
-    { return cell; }
-
-    public void setCell(Cell c)
-    { cell = c; }
-    
-    public void setCell(int x, int y)
-    { cell = new Cell(x, y); }
-    
-    public void putOnBoard(Board b, Cell c)
-    {
-        board.put(this, c);
-    }
-    
-    public void removeFromBoard()
-    {
-        board.put(null, cell);
-    }
-    
-    public void moveTo(Cell c)
-    {
-        board.movePieceTo(this, c);
-    }
     
     public String toString()
     {

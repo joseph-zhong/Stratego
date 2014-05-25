@@ -12,6 +12,6 @@ public class Colonel extends Piece
 {
     public Colonel()
     {
-        super(8, 'n', 1, null);
+        super(8, 1);
     }
 }

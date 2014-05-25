@@ -14,6 +14,6 @@ public class Flag extends Piece
 {
     public Flag()
     {
-        super(0, 'n', 0, null);
+        super(0, 0);
     }
 }

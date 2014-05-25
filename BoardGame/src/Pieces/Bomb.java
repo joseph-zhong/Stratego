@@ -13,6 +13,6 @@ public class Bomb extends Piece
 {
     public Bomb()
     {
-        super(11, 'n', 0, null);
+        super(11, 0);
     }
 }
