@@ -26,10 +26,10 @@ public class Board
     public static void main(String[] args)
     {
         Board b = new Board();
-        b.getCell(3, 4).put(new Marshal());
+        b.getCell(3, 4).put(new Major());
         System.out.println(b.toString());
 
-        b.getCell(3, 5).put(new Marshal());
+        b.getCell(3, 5).put(new Major());
         System.out.println(b.toString());
         
         if(b.canMove(3,4,3,5))
