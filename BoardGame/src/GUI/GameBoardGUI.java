@@ -42,8 +42,8 @@ public class GameBoardGUI
             for(int c = 0; c < LENGTH; c++)
             {
                 boolean _isWater;
-                if((c == 2 || c == 3 || c == 6 || c == 7)
-                        && (r == 4 || r == 5))
+                if((r == 2 || r == 3 || r == 6 || r == 7)
+                        && (c == 4 || c == 5))
                 {
                     _isWater = true;
                 }
@@ -51,11 +51,17 @@ public class GameBoardGUI
                 {
                     _isWater = false;
                 }
-                CellGUI tempCell = new CellGUI(r * CellLength, c * CellLength,
-                        CellLength, CellLength, Color.PINK, ".", _isWater);
-                if(tempCell.getIsWater())
-                {
 
+                CellGUI tempCell;
+                if(_isWater)
+                {
+                     tempCell = new CellGUI(r * CellLength, c * CellLength,
+                        CellLength, CellLength, Color.CYAN, ".", _isWater);
+                }
+                else
+                {
+                    tempCell = new CellGUI(r * CellLength, c * CellLength,
+                        CellLength, CellLength, Color.ORANGE, ".", _isWater);
                 }
 
                 Cells.add(tempCell);
