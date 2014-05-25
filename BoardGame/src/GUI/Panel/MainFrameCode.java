@@ -4,6 +4,10 @@
  */
 package GUI.Panel;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 /**
@@ -12,6 +16,11 @@ import javax.swing.JFrame;
  */
 public class MainFrameCode extends JFrame
 {
+    private javax.swing.JButton StartGameButton;
+    private javax.swing.JButton InstructionsButton;
+    private javax.swing.JButton HighScoresButton;
+    private javax.swing.JButton QuitButton;
+
 
     /**
      * Creates new form MainFrame
@@ -28,23 +37,106 @@ public class MainFrameCode extends JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    private void initComponents()
+    {
+        StartGameButton = new JButton();
+        InstructionsButton = new JButton();
+        HighScoresButton = new JButton();
+        QuitButton = new JButton();
+
+        StartGameButton.setText("Start Game");
+        StartGameButton.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseReleased(MouseEvent evt)
+            {
+                StartButtonMouseReleased(evt);
+            }
+        });
+
+        InstructionsButton.setText("Instructions");
+        InstructionsButton.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseReleased(MouseEvent evt)
+            {
+                InstructionsMouseReleased(evt);
+            }
+        });
+
+        HighScoresButton.setText("High Scores");
+        HighScoresButton.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseReleased(MouseEvent evt)
+            {
+                HighScoresMouseReleased(evt);
+            }
+        });
+
+        QuitButton.setText("Quit");
+        QuitButton.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseReleased(MouseEvent evt)
+            {
+                QuitMouseReleased(evt);
+            }
+        });
+
+        this.setTitle("Stratego");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(QuitButton)
+                    .addComponent(HighScoresButton)
+                    .addComponent(InstructionsButton)
+                    .addComponent(StartGameButton))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(StartGameButton)
+                .addGap(18, 18, 18)
+                .addComponent(InstructionsButton)
+                .addGap(18, 18, 18)
+                .addComponent(HighScoresButton)
+                .addGap(18, 18, 18)
+                .addComponent(QuitButton)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
-
         pack();
     }// </editor-fold>
+
+    private void StartButtonMouseReleased(MouseEvent evt)
+    {
+        System.out.println("Start Game");
+    }
+
+    private void InstructionsMouseReleased(MouseEvent evt)
+    {
+        System.out.println("Instructions ");
+    }
+
+    private void HighScoresMouseReleased(MouseEvent evt)
+    {
+        System.out.println("High Scores");
+    }
+
+    private void QuitMouseReleased(MouseEvent evt)
+    {
+        System.out.println("Quit");
+        dispose();
+    }
 
     /**
      * @param args the command line arguments
@@ -80,6 +172,4 @@ public class MainFrameCode extends JFrame
             }
         });
     }
-    // Variables declaration - do not modify
-    // End of variables declaration
 }
