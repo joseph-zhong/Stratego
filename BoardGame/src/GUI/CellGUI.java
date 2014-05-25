@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package boardgame;
+package GUI;
 
 /**
  *
@@ -15,7 +15,7 @@ package boardgame;
  *
  **/
 
-public class CellGUI 
+public class CellGUI
 {
 
 }

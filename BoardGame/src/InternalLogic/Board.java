@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package boardgame;
+package InternalLogic;
 
 /**
  *
@@ -21,7 +21,7 @@ public class Board
             {
                 grid[i][j] = null;
             }
-        }   
+        }
     }
     public static void main(String [] args){
         Board b = new Board();
@@ -40,7 +40,7 @@ public class Board
         grid[target.getRow()][target.getCol()] = p;
         return temp;
     }
-    
+
     public boolean canMove(Piece p, Cell target)
     {
         Cell currentCell = findPieceInGrid(p);
@@ -64,7 +64,7 @@ public class Board
                 {
                     for(int i = currentCell.getCol(); i < target.getCol(); i++)
                     {
-                        if(grid[target.getRow()][i] != null 
+                        if(grid[target.getRow()][i] != null
                                 && grid[target.getRow()][i] != p)
                         {
                             return false;
@@ -78,7 +78,7 @@ public class Board
                     //check if there are any pieces in between piece and target
                     for(int i = target.getCol(); i > currentCell.getCol(); i--)
                     {
-                        if(grid[target.getRow()][i] != null 
+                        if(grid[target.getRow()][i] != null
                                 && grid[target.getRow()][i] != p)
                         {
                             return false;
@@ -99,7 +99,7 @@ public class Board
                 {
                     for(int i = currentCell.getRow(); i < target.getRow(); i++)
                     {
-                        if(grid[target.getCol()][i] != null 
+                        if(grid[target.getCol()][i] != null
                                 && grid[target.getCol()][i] != p)
                         {
                             return false;
@@ -113,7 +113,7 @@ public class Board
                     //check if there are any pieces in between piece and target
                     for(int i = target.getRow(); i > currentCell.getRow(); i--)
                     {
-                        if(grid[target.getCol()][i] != null 
+                        if(grid[target.getCol()][i] != null
                                 && grid[target.getCol()][i] != p)
                         {
                             return false;
@@ -125,8 +125,8 @@ public class Board
         }
         return false;
     }
-    
-    
+
+
     //move() returns whether there was an attack and values should be revealed
     public boolean move(Piece p, Cell target)
     {
@@ -175,7 +175,7 @@ public class Board
         }
         return str;
     }
-    
+
     private Cell findPieceInGrid(Piece p)
     {
         for(int row = 0; row < grid.length; row++)

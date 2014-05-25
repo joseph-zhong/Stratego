@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package boardgame;
+package GUI;
 
 import java.awt.Button;
 import java.awt.Color;

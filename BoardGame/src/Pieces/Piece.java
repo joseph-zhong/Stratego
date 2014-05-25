@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package boardgame;
+package Pieces;
 
 /**
  *
@@ -18,12 +18,12 @@ abstract class Piece
 
     public Piece(int p, char a, int d, Image f)
     {
-        power = p;  
+        power = p;
         ability = a;
         distanceCapable = d;
         face = f;
     }
-    
+
     public boolean attack(Piece p)
     {
         //if attacks flag
@@ -49,7 +49,7 @@ abstract class Piece
         //otherwise compare power values
         return power >= p.getPower();
     }
-    
+
     public int getPower()
     { return power; }
 
@@ -63,7 +63,7 @@ abstract class Piece
 
     public Image getFace()
     { return face; }
-    
+
     public String toString()
     {
         return Integer.toString(power);

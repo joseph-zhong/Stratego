@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package boardgame;
+package Pieces;
 
 /**
  *
  * @author Adarsh
  */
 public class Lieutenant {
-    
+
 }

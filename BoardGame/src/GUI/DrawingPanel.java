@@ -1,4 +1,4 @@
-package boardgame;
+package GUI;
 
 // CSE 143, Homework 1, Tiles
 // This provided class helps make it easier to draw the assignment's graphics.

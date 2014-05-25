@@ -2,22 +2,22 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package boardgame;
+package InternalLogic;
 
 /**
  *
  * @author Adarsh
  */
-public class Move 
+public class Move
 {
     private Piece piece;
     private Cell lastCell;
-    
-    public int getPower()
-    { return power; }
-    
+
+    public Piece getPower()
+    { return piece; }
+
     public Cell getLastCell()
     { return lastCell; }
-    
-            
+
+
 }

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package boardgame;
+package GUI;
 
 import java.awt.Color;
 
@@ -19,7 +19,7 @@ import java.awt.Color;
 
 public class ArrowButton extends ButtonGUI
 {
-    
+
 
 
     public ArrowButton(int _x, int _y, int _width, int _height, Color _c, String _name)
