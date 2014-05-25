@@ -27,11 +27,13 @@ public class CellGUI extends ButtonGUI
     private BufferedImage PieceImage;
 
     private boolean isPossibleMove;
+    private boolean isWater;
 
-    public CellGUI(int _x, int _y, int _width, int _height, Color _c, String _name)
+    public CellGUI(int _x, int _y, int _width, int _height, Color _c, String _name, boolean _isWater)
     {
         super(_x, _y, _width, _height, _c, _name);
         isPossibleMove = true;
+        isWater = _isWater;
     }
 
     /** Draws this button using the given graphics pen. */
@@ -41,6 +43,11 @@ public class CellGUI extends ButtonGUI
         super.draw(g);
         g.setColor(Color.WHITE);
         g.drawRect(getX(), getY(), getWidth(), getHeight());
+    }
+
+    public void setColor(Color _c)
+    {
+
     }
 
     public void setPiece(BufferedImage _PieceImage)
@@ -58,5 +65,15 @@ public class CellGUI extends ButtonGUI
         {
             PieceImage = null;
         }
+    }
+
+    public BufferedImage getPiece()
+    {
+        return PieceImage;
+    }
+
+    public boolean getIsWater()
+    {
+        return isWater;
     }
 }
