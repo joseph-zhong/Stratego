@@ -26,17 +26,18 @@ public class PieceObject
 {
     private BufferedImage PieceImage;
 
-    private final String TEN = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Marshal.png";
-    private final String NINE = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/General.png";
-    private final String EIGHT = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Colonel.png";
-    private final String SEVEN = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Major.png";
-    private final String SIX = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Captain.png";
-    private final String FIVE = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Liuetenant.png";
-    private final String FOUR = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Sergant.png";
-    private final String THREE = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Minor.png";
-    private final String TWO = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Scout.png";
-    private final String ONE = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Flag.png";
-    private final String ZERO = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Bomb.png";
+    private final String MARSHAL = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Marshal.png";
+    private final String GENERAL = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/General.png";
+    private final String COLONEL = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Colonel.png";
+    private final String MAJOR = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Major.png";
+    private final String CAPTAIN = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Captain.png";
+    private final String LIEUTENANT = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Lieutenant.png";
+    private final String SERGEANT = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Sergeant.png";
+    private final String MINER = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Miner.png";
+    private final String SCOUT = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Scout.png";
+    private final String SPY = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Spy.png";
+    private final String FLAG = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Flag.png";
+    private final String BOMB = "C:/Users/Joseph/Downloads/GitHub/CodeDay3AI-2014/BoardGame/src/Images/Bomb.png";
 
     private int power;
 
@@ -52,7 +53,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(ZERO));
+                PieceImage = ImageIO.read(new File(MARSHAL));
             }
             catch (IOException e)
             {
@@ -63,7 +64,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(ONE));
+                PieceImage = ImageIO.read(new File(SPY));
             }
             catch (IOException e)
             {
@@ -74,7 +75,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(TWO));
+                PieceImage = ImageIO.read(new File(SCOUT));
             }
             catch (IOException e)
             {
@@ -85,7 +86,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(THREE));
+                PieceImage = ImageIO.read(new File(MINER));
             }
             catch (IOException e)
             {
@@ -96,7 +97,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(FOUR));
+                PieceImage = ImageIO.read(new File(SERGEANT));
             }
             catch (IOException e)
             {
@@ -107,7 +108,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(FIVE));
+                PieceImage = ImageIO.read(new File(LIEUTENANT));
             }
             catch (IOException e)
             {
@@ -118,7 +119,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(SIX));
+                PieceImage = ImageIO.read(new File(CAPTAIN));
             }
             catch (IOException e)
             {
@@ -129,7 +130,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(SEVEN));
+                PieceImage = ImageIO.read(new File(MAJOR));
             }
             catch (IOException e)
             {
@@ -140,7 +141,7 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(EIGHT));
+                PieceImage = ImageIO.read(new File(COLONEL));
             }
             catch (IOException e)
             {
@@ -151,18 +152,29 @@ public class PieceObject
         {
             try
             {
-                PieceImage = ImageIO.read(new File(NINE));
+                PieceImage = ImageIO.read(new File(GENERAL));
             }
             catch (IOException e)
             {
                 System.out.println("File not found");
             }
         }
-        else if(_power == 10)
+        else if(_power == (int) 'f')
         {
             try
             {
-                PieceImage = ImageIO.read(new File(TEN));
+                PieceImage = ImageIO.read(new File(FLAG));
+            }
+            catch (IOException e)
+            {
+                System.out.println("File not found");
+            }
+        }
+        else if(_power == (int) 'b')
+        {
+            try
+            {
+                PieceImage = ImageIO.read(new File(BOMB));
             }
             catch (IOException e)
             {
@@ -181,8 +193,8 @@ public class PieceObject
         return PieceImage;
     }
 
-    public void drawImage(Graphics g)
+    public void drawImage(Graphics g, int _x, int _y, int _width, int _height)
     {
-        g.drawImage(PieceImage, power, power, power, power, null);
+        g.drawImage(PieceImage, _x, _y, _width, _height, null);
     }
 }

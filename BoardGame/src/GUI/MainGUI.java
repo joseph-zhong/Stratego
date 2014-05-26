@@ -318,6 +318,13 @@ public class MainGUI extends JFrame
                                             {
                                                 MainManager.getBoard().move(r1, c1, r2, c2);
                                                 System.out.println("Move Succesful");
+                                                for(int row = 0; row < mainBoard.getCells()[0].length; row++)
+                                                {
+                                                    for (int col = 0; col < mainBoard.getCells()[1].length; col++)
+                                                    {
+                                                        
+                                                    }
+                                                }
                                             }
                                             else
                                             {
