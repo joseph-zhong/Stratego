@@ -322,7 +322,10 @@ public class MainGUI extends JFrame
                                                 {
                                                     for (int col = 0; col < mainBoard.getCells()[1].length; col++)
                                                     {
-                                                        
+                                                        if(MainManager.getBoard().getCell(row, col).get().getPower() == 0)
+                                                        {
+                                                            
+                                                        }
                                                     }
                                                 }
                                             }
