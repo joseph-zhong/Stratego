@@ -13,18 +13,18 @@ import Pieces.Piece;
 public class GameControl
 {
     private Board board;
-    private Computer comp;
+    private Computer comp1;
 
 
     public GameControl()
     {
         board = new Board();
-        comp = new Computer();
+//        comp1 = new Computer();
     }
 
     public Computer getComputer()
     {
-        return comp;
+        return comp1;
     }
 
     public Board getBoard()

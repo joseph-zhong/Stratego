@@ -4,12 +4,16 @@
  */
 package GUI.Panel;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.Panel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -24,6 +28,10 @@ public class MainFrameCode extends JFrame
     private javax.swing.JButton QuitButton;
 
     private JPanel MainPanel;
+
+    private Panel awtPanel;
+
+    private JLabel testLabel;
 
     /**
      * Creates new form MainFrame
@@ -46,6 +54,11 @@ public class MainFrameCode extends JFrame
         InstructionsButton = new JButton();
         HighScoresButton = new JButton();
         QuitButton = new JButton();
+
+        awtPanel = new Panel();
+        awtPanel.setBackground(Color.BLACK);
+
+        testLabel = new JLabel();
 
         StartGameButton.setText("Start Game");
         StartGameButton.addMouseListener(new MouseAdapter()
@@ -91,6 +104,19 @@ public class MainFrameCode extends JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        /*
+        javax.swing.GroupLayout awtPanelLayout = new javax.swing.GroupLayout(awtPanel);
+        awtPanel.setLayout(awtPanelLayout);
+        awtPanelLayout.setHorizontalGroup(
+            awtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        awtPanelLayout.setVerticalGroup(
+            awtPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        */
+
         GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,7 +158,8 @@ public class MainFrameCode extends JFrame
 
     private void createPanel()
     {
-        MainPanel = new JPanel();
+        MainPanel = new JPanel(new GridLayout(9, 9));
+        /*
         GroupLayout MainPanelLayout = new GroupLayout(MainPanel);
         MainPanel.setLayout(MainPanelLayout);
         MainPanelLayout.setHorizontalGroup(
@@ -143,8 +170,86 @@ public class MainFrameCode extends JFrame
             MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 541, Short.MAX_VALUE)
         );
+        * */
 
+
+        MainPanel.setSize(541, 541);
+/*
+        MainPanel.add(awtPanel);
+
+        GridLayout testLayout = new GridLayout(9, 9);
+        MainPanel.setLayout(testLayout);
+
+        MainPanel.repaint();
+*/
+
+/*
+        GroupLayout awtPanelLayout = new GroupLayout(awtPanel);
+        awtPanel.setLayout(awtPanelLayout);
+        awtPanelLayout.setHorizontalGroup(
+            awtPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        awtPanelLayout.setVerticalGroup(
+            awtPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        testLabel.setText("testLabel");
+        testLabel.addMouseMotionListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseReleased(MouseEvent evt)
+            {
+                testLabelMouseDragged(evt);
+            }
+        });
+*/
+        //MainPanel.add(testLabel);
+        JPanel testPanel = new JPanel();
+        JLabel testLabel123 = new JLabel("asdf");
+        testPanel.add(testLabel123);
+        MainPanel.add(testPanel);
+        MainPanel.setVisible(true);
+        MainPanel.repaint();
+        repaint();
+        getContentPane().repaint();
+/*
+        javax.swing.GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(MainPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(testLabel)
+                        .addGap(35, 35, 35)
+                        .addComponent(awtPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 589, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addComponent(awtPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(testLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(565, Short.MAX_VALUE))
+        );
+*/
         System.out.println("Panel Success");
+    }
+
+    private void testLabelMouseDragged(MouseEvent evt)
+    {
+        System.out.println("Dragged Coordinates: " + evt.getX() + ", " + evt.getY());
+        testLabel.setLocation(evt.getX(), evt.getY());
+        testLabel.repaint();
     }
 
     private void InstructionsMouseReleased(MouseEvent evt)
@@ -173,7 +278,8 @@ public class MainFrameCode extends JFrame
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -191,8 +297,10 @@ public class MainFrameCode extends JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new MainFrameCode().setVisible(true);
             }
         });

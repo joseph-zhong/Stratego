@@ -19,7 +19,7 @@ public class Computer
     private Move[] oppMoves = new Move[4];
     private Random r = new Random();
 
-    private Board board;
+    private Board board1;
 
     private ArrayList<Piece> totalPiecesForSetup;
     private ArrayList<Piece> totalPiecesForGamePlay;
@@ -39,7 +39,7 @@ public class Computer
 
     public Computer()
     {
-        board = new Board();
+        board1 = new Board();
         totalPiecesForGamePlay = new ArrayList(40);
         instantiatePieceArrays();
         addSingles();
@@ -110,18 +110,18 @@ public class Computer
         switch (flagPos)
         {
             case 1 :
-                board.getCell(0, 0).put(singles[3]);        //set flag
-                board.getCell(1, 0).put(bombs[0]);          //set bomb 1
-                board.getCell(0, 1).put(bombs[1]);          //set bomb 2
+                board1.getCell(0, 0).put(singles[3]);        //set flag
+                board1.getCell(1, 0).put(bombs[0]);          //set bomb 1
+                board1.getCell(0, 1).put(bombs[1]);          //set bomb 2
                 break;
             case 2 :
                 flagCol = r.nextInt(7) + 1;                 //random col
-                board.getCell(0, flagCol).put(singles[3]);  //set flag
+                board1.getCell(0, flagCol).put(singles[3]);  //set flag
                 break;
             case 3 :
-                board.getCell(0, 9).put(singles[3]);        //set flag
-                board.getCell(0, 8).put(bombs[0]);          //set bomb 1
-                board.getCell(1, 9).put(bombs[1]);          //set bomb 2
+                board1.getCell(0, 9).put(singles[3]);        //set flag
+                board1.getCell(0, 8).put(bombs[0]);          //set bomb 1
+                board1.getCell(1, 9).put(bombs[1]);          //set bomb 2
                 break;
         }
 
@@ -135,38 +135,38 @@ public class Computer
             {
 
                 case 1 : //for 2 bombs
-                    board.getCell(1, (flagCol - 1)).put(bombs[0]);
-                    board.getCell(1, (flagCol + 1)).put(bombs[1]);
+                    board1.getCell(1, (flagCol - 1)).put(bombs[0]);
+                    board1.getCell(1, (flagCol + 1)).put(bombs[1]);
 
                     System.out.println("MESSAGE FROM AI: Flag's position - " + flagPos);
                     System.out.println("MESSAGE FROM AI: Bombs protecting flag -: " + bombsToProtect);
 
                     break;
                 case 2 : //for 3 bombs
-                    board.getCell(0, (flagCol - 1)).put(bombs[0]);
-                    board.getCell(0, (flagCol + 1)).put(bombs[1]);
-                    board.getCell(1, flagCol).put(bombs[2]);
+                    board1.getCell(0, (flagCol - 1)).put(bombs[0]);
+                    board1.getCell(0, (flagCol + 1)).put(bombs[1]);
+                    board1.getCell(1, flagCol).put(bombs[2]);
 
                     System.out.println("MESSAGE FROM AI: Flag's position - " + flagPos);
                     System.out.println("MESSAGE FROM AI: Bombs protecting flag -: " + bombsToProtect);
 
                     break;
                 case 3 :    //for four bombs
-                    board.getCell(0, (flagCol - 1)).put(bombs[0]);
-                    board.getCell(1, (flagCol - 1)).put(bombs[1]);
-                    board.getCell(1, (flagCol + 1)).put(bombs[2]);
-                    board.getCell(0, (flagCol + 1)).put(bombs[3]);
+                    board1.getCell(0, (flagCol - 1)).put(bombs[0]);
+                    board1.getCell(1, (flagCol - 1)).put(bombs[1]);
+                    board1.getCell(1, (flagCol + 1)).put(bombs[2]);
+                    board1.getCell(0, (flagCol + 1)).put(bombs[3]);
 
                     System.out.println("MESSAGE FROM AI: Flag's position - " + flagPos);
                     System.out.println("MESSAGE FROM AI: Bombs protecting flag -: " + bombsToProtect);
 
                     break;
                 case 4:     //for five bombs
-                    board.getCell(0, (flagCol - 1)).put(bombs[0]);
-                    board.getCell(1, (flagCol - 1)).put(bombs[1]);
-                    board.getCell(1, flagCol).put(bombs[2]);
-                    board.getCell(1, (flagCol + 1)).put(bombs[3]);
-                    board.getCell(0, (flagCol + 1)).put(bombs[4]);
+                    board1.getCell(0, (flagCol - 1)).put(bombs[0]);
+                    board1.getCell(1, (flagCol - 1)).put(bombs[1]);
+                    board1.getCell(1, flagCol).put(bombs[2]);
+                    board1.getCell(1, (flagCol + 1)).put(bombs[3]);
+                    board1.getCell(0, (flagCol + 1)).put(bombs[4]);
 
                     System.out.println("MESSAGE FROM AI: Flag's position - " + flagPos);
                     System.out.println("MESSAGE FROM AI: Bombs protecting flag -: " + bombsToProtect);
@@ -196,7 +196,7 @@ public class Computer
 
     private boolean checkIfCellIsFree(int row, int col)
     {
-        if (board.getCell(row, col) == null)
+        if (board1.getCell(row, col) == null)
             return false;
         return true;
     }
@@ -212,7 +212,7 @@ public class Computer
                 totalPiecesForSetup.remove(curPiece);
                 totalPiecesForGamePlay.add(curPiece);
                 if (checkIfCellIsFree(i, j))
-                    board.getCell(i, j).put(curPiece);
+                    board1.getCell(i, j).put(curPiece);
                 else
                     j++;
             }
@@ -225,12 +225,12 @@ public class Computer
        int rRow = r.nextInt(10);
        int rCol = r.nextInt(10);
 
-        while (!board.canMove(startR, startC, rRow, rCol))
+        while (!board1.canMove(startR, startC, rRow, rCol))
         {
             rRow = r.nextInt(10);
             rCol = r.nextInt(10);
         }
-        board.getCell(rRow, rCol).put(board.getCell(startR, startC).get());
-        board.getCell(startR, startC).removePiece();
+        board1.getCell(rRow, rCol).put(board1.getCell(startR, startC).get());
+        board1.getCell(startR, startC).removePiece();
     }
 }

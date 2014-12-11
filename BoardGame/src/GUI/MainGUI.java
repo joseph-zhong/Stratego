@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -114,6 +115,7 @@ public class MainGUI extends JFrame
     {
         initComponents();
 
+
         primaryMenu = new MainMenuGUI();
 
         ButtonGUI StartButton = new ButtonGUI(PANEL_WIDTH / 2 - BUTTON_WIDTH / 2,
@@ -185,7 +187,7 @@ public class MainGUI extends JFrame
                     menuStage = false;
                     System.out.println("Start Game Instigated");
 
-                    MainManager.getComputer().flagSetUp();
+//                    MainManager.getComputer().flagSetUp();
 
                     panel.clear();
                     mainBoard.buildGameBoard(GAME_WIDTH / 10);
@@ -318,13 +320,25 @@ public class MainGUI extends JFrame
                                             {
                                                 MainManager.getBoard().move(r1, c1, r2, c2);
                                                 System.out.println("Move Succesful");
+                                                    // Aaron does this internally change the pieces?
                                                 for(int row = 0; row < mainBoard.getCells()[0].length; row++)
                                                 {
                                                     for (int col = 0; col < mainBoard.getCells()[1].length; col++)
                                                     {
-                                                        if(MainManager.getBoard().getCell(row, col).get().getPower() == 0)
+                                                        //if(MainManager.getBoard().getCell(row, col).get().getPower() == 0)
+                                                        if(MainManager.getBoard().getCell(row, col).get() != null)
                                                         {
-                                                            
+                                                            //System.out.println("Hello Joseph");
+                                                            if(MainManager.getBoard().getCell(row, col).get().equals(new Sergeant()))
+                                                            {
+                                                                mainBoard.getCells()[r][c].getPiece().drawImage(mainGraphics,
+                                                                    mainBoard.getCells()[r][c].getX(),
+                                                                    mainBoard.getCells()[r][c].getY(),
+                                                                    mainBoard.getCells()[r][c].getWidth(),
+                                                                    mainBoard.getCells()[r][c].getHeight());
+                                                                MainManager.getBoard().getCell(r, c).put(new Sergeant());
+                                                            }
+
                                                         }
                                                     }
                                                 }
